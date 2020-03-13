@@ -1,0 +1,22 @@
+*{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+   height: 100%;
+/*    margin: 0;*/
+/*    padding: 0;*/
+    /* background-color: rgb(189, 189, 219); */
+    
+   overflow: scroll;
+   
+}
+canvas{
+    position: absolute;
+    background-image: url(img/kai-pilger-Ef6iL87-vOA-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+}
