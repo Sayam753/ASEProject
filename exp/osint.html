@@ -6,30 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="osint.css">
-  <link rel="stylesheet" href="team.css">
-  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="styles/osint.css">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+  <link rel="stylesheet" href="styles/team.css">
+  <link rel="stylesheet" href="styles/about.css">
   <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
   <link href="https://fonts.googleapis.com/css?family=Baloo+2&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/68c9f8e124.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script defer src="theme.js"></script>
-  <link rel="stylesheet" href="navbar.css" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
-  <title>Document</title>
+ 
+  <script defer src="javascript/theme.js"></script>
+  <script src="https://kit.fontawesome.com/68c9f8e124.js" crossorigin="anonymous"></script>
+  <title>ASE Project</title>
 </head>
 
 <body id="page-top">
-
+  
   <canvas id="nokey" width="800" height="800"></canvas>
-  <script src="particle.js"></script>
-  <link rel="stylesheet" href="particle.css">
+  <link rel="stylesheet" href="styles/particle.css">
+  <script src="javascript/particle.js"></script>
 
-  <div class="container-icon">
+  <div class="container-icon" id="options">
     <div class="wrapper">
       <ul class="stage">
         <li class="scene">
@@ -143,7 +145,6 @@
   </div>
 
 
-
   <nav class="navbar">
     <ul class="navbar-nav">
       <li class="logo">
@@ -161,7 +162,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="#page-top" class="nav-link">
+        <a href="#options" class="nav-link">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="house-damage"
             class="svg-inline--fa fa-house-damage fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512">
@@ -211,7 +212,7 @@
     
 
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="./index.html" class="nav-link">
           <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-shuttle" role="img"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
             class="svg-inline--fa fa-space-shuttle fa-w-20 fa-5x">
@@ -224,7 +225,7 @@
                 class="fa-primary"></path>
             </g>
           </svg>
-          <span class="link-text">Shuttle</span>
+          <span class="link-text">Login/SignUp</span>
         </a>
       </li>
 
@@ -271,17 +272,18 @@
     </ul>
   </nav>
 
+
   <section class="page-section about-heading" id="about">
-    <div class="about-container" ><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg"/>
+    <div class="about-container" ><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/wire.jpg"/>
         <div class="about-heading-content">
             <div class="row">
                 <div class="col-lg-10 col-xl-9 mx-auto">
                     <div class="bg-faded rounded p-5" >
                         <h2 class="section-heading mb-4"><span class="section-heading-upper">What is this all about?</span><span class="section-heading-lower"> About Our Project</span></h2>
-                        <p>Open-source intelligence (OSINT) is data collected from publicly available sources to be used in an intelligence context.[1] In the intelligence community, the term "open" refers to overt, publicly available sources (as opposed to covert or clandestine sources). It is not related to open-source software or collective intelligence.
+                        <p>Open-source intelligence (OSINT) is data collected from publicly available sources to be used in an intelligence context. In the intelligence community, the term "open" refers to overt, publicly available sources (as opposed to covert or clandestine sources). It is not related to open-source software or collective intelligence.
 
                           OSINT under one name or another has been around for hundreds of years. With the advent of instant communications and rapid information transfer, a great deal of actionable and predictive intelligence can now be obtained from public, unclassified sources.</p>
-                        <p class="mb-0"><span>Open Source Intelligence (OSINT) is the collection and analysis of information that is gathered from public, or open, sources.[2] OSINT is primarily used in national security, law enforcement, and business intelligence functions and is of value to analysts who use non-sensitive intelligence in answering classified, unclassified, or proprietary intelligence requirements across the previous intelligence disciplines.</span></p>
+                        <p class="mb-0"><span>Open Source Intelligence (OSINT) is the collection and analysis of information that is gathered from public, or open, sources. OSINT is primarily used in national security, law enforcement, and business intelligence functions and is of value to analysts who use non-sensitive intelligence in answering classified, unclassified, or proprietary intelligence requirements across the previous intelligence disciplines.</span></p>
                     </div>
                 </div>
             </div>
@@ -289,14 +291,15 @@
     </div>
 </section>
 
+
   <section id="team" class="bg-light">
     <div class="row">
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/levi.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="img/Sayam Kumar ASE.jpg" />
           <h4>Sayam Kumar</h4>
-          <p class="text-muted">Lead Designer</p>
+          <p class="text-muted">API Logic</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="https://twitter.com/sayamkumar753">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
                   class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -304,7 +307,7 @@
                     d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="https://www.facebook.com/profile.php?id=100004385058227">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
                   class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -312,7 +315,7 @@
                     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="mailto:sayamkumar049@gmail.com">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
                   class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -324,11 +327,11 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/aomine.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="img/pp.jpg" />
           <h4>Pradum Singh</h4>
-          <p class="text-muted">Lead Marketer</p>
+          <p class="text-muted">Frontend Designer</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="https://twitter.com/PradumS16457175">
               <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
                 class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512">
@@ -336,7 +339,7 @@
                   d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
                 </path>
               </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="https://www.facebook.com/pradum2216">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
                   class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -344,7 +347,7 @@
                     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="mailto:pradum2216@gmail.com">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
                   class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -356,11 +359,11 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/c2.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="img/nethra.jpg" />
           <h4>Gunti Nethra</h4>
-          <p class="text-muted">Lead Developer</p>
+          <p class="text-muted">Backend Designer</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="https://twitter.com/nethra160201">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
                   class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -368,7 +371,7 @@
                     d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
                   class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -376,7 +379,7 @@
                     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="mailto:nethra.g18@iiits.in">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
                   class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -388,11 +391,11 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/Iris.(Enen.no.Shouboutai).full.2627455.jpg" />
-          <h4>Isha Agarwal</h4>
-          <p class="text-muted">Lead Designer</p>
+        <div class="team-member"><img class="rounded-circle mx-auto isha" src="img/isha.jpg" />
+          <h4>Isha Aggarwal</h4>
+          <p class="text-muted">Software Testing</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
                   class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -400,7 +403,7 @@
                     d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
                   class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -408,7 +411,7 @@
                     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
                   class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -420,11 +423,11 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/Kamado.Tanjirou.full.2539001.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="img/sushant.jpg" />
           <h4>Sushant Bondle</h4>
-          <p class="text-muted">Lead Marketer</p>
+          <p class="text-muted">Documentation</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
               <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
                 class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512">
@@ -432,7 +435,7 @@
                   d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
                 </path>
               </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="https://facebook.com/sushant.bondle.5">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
                   class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -440,7 +443,7 @@
                     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="mailto:sushantsuryakant.b18@iiits.in">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
                   class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -452,11 +455,11 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/bg-10.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="img/dasari.jpg" />
           <h4>Dasari Jayasree</h4>
-          <p class="text-muted">Lead Developer</p>
+          <p class="text-muted">Deployment</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
                   class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
@@ -464,7 +467,7 @@
                     d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
                   class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -472,7 +475,7 @@
                     d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                   </path>
                 </svg></a></li>
-            <li class="list-inline-item"><a href="#">
+            <li class="list-inline-item"><a href="#team">
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
                   class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512">
