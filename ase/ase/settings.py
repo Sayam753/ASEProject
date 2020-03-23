@@ -121,3 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL='users.user'
+LOGIN_REDIRECT_URL='main-search'
