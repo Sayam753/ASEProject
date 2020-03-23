@@ -1,0 +1,14 @@
+*{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+canvas{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url(../img/kai-pilger-Ef6iL87-vOA-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+    top: 0px;
+    left: 0px;
+}
