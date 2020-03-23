@@ -1,0 +1,8 @@
+ase/db.sqlite3
+ase/search/__pycache__/
+ase/search/migrations/
+ase/users/__pycache__/
+ase/users/migrations/
+ase/ase/__pycache__/
+.history/
+.vscode/

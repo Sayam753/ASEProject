@@ -1,6 +1,9 @@
 from django.db import models
 
+
 # Create your models here.
 class Search(models.Model):
-    target=models.CharField(max_length=50)
-    result=models.TextField()
+    query = models.CharField(max_length=100)
+
+    def __repr__(self):
+        return f"{self.query}"
