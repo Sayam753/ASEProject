@@ -1,7 +1,38 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-import requests
-from .utils import format_dict
+from .modules import *
+from .forms import SearchForm
+from blockcypher import get_blockchain_overview, get_address_details, get_block_overview
 
 
 # Create your views here.
+def home(request):
+    return render(request, 'search/landing.html')
+
+
+def query(request, argument):
+    if request.method == "POST":
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            arg = form.cleaned_data.get('query')
+            response = None
+            if argument == "btc_block_overview":
+                response = get_block_overview(arg)
+            elif argument == "btc_address":
+                response = get_address_details(arg)
+            elif argument == "domain":
+                response = get_company_detail(arg)
+            elif argument == "email":
+                response = fetch_email(arg)
+            elif argument == "device":
+                response = get_device(arg)
+            elif argument == "ip":
+                response = ip_details(arg)
+
+            return render(request, 'search/random.html', {'response': response})
+    else:
+        if argument == "btc_block":
+            response = get_blockchain_overview()
+            return render(request, 'search/random.html', {'response': response})
+        form = SearchForm()
+    return render(request, 'search/searchform.html', {'form': form})

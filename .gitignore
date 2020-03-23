@@ -1,6 +1,8 @@
+.idea/
 ase/db.sqlite3
 ase/search/__pycache__/
 ase/search/migrations/
+ase/users/migrations/0001_initial.py
 ase/users/__pycache__/
 ase/users/migrations/
 ase/ase/__pycache__/

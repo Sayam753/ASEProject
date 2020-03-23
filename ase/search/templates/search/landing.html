@@ -1,0 +1,10 @@
+{% extends "search/base.html" %}
+{% block content %}
+  <a href="{% url 'search' 'btc_block' %}">Btc Latest Block</a><br>
+  <a href="{% url 'search' 'btc_block_overview' %}">Btc Block Overview By Hash</a><br>
+  <a href="{% url 'search' 'btc_address' %}">Btc Address</a><br>
+  <a href="{% url 'search' 'domain' %}">Domain</a><br>
+  <a href="{% url 'search' 'email' %}">Email</a><br>
+  <a href="{% url 'search' 'device' %}">Device</a><br>
+  <a href="{% url 'search' 'ip' %}">Ip</a><br>
+{% endblock content %}
