@@ -19,5 +19,6 @@ def test_ip(key, ip, extras):
             print(dir(search))
             """
     else:
+        print(key)
         api = shodan.Shodan(key)
         search = api.host(ip)    
