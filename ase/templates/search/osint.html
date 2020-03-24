@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles/osint.css">
-  <link rel="stylesheet" href="styles/normalize.css">
-  <link rel="stylesheet" href="styles/navbar.css">
-  <link rel="stylesheet" href="styles/team.css">
-  <link rel="stylesheet" href="styles/about.css">
-  <link rel="stylesheet" href="styles/hover.css">
+  <link rel="stylesheet" href="{% static 'styles/osint.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/team.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/about.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/hover.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
@@ -21,16 +22,50 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
 
-  <script defer src="javascript/theme.js"></script>
+  <script defer src="{% static 'javascript/theme.js' %}"></script>
   <script src="https://kit.fontawesome.com/68c9f8e124.js" crossorigin="anonymous"></script>
+  <style>
+    .button_static {
+      width: 100%;
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      transition-duration: 0.5s;
+      background-color: #0040ff;
+      color: white;
+      cursor: pointer;
+    }
+    .button_static:hover {
+      background-color: #ff4b00;
+      color: white;
+    }
+  </style>
   <title>ASE Project</title>
 </head>
 
 <body id="page-top">
 
+
   <canvas id="nokey" width="800" height="800"></canvas>
-  <link rel="stylesheet" href="styles/particle.css">
-  <script src="javascript/particle.js"></script>
+  <link rel="stylesheet" href="{% static 'styles/particle.css' %}">
+  <script src="{% static 'javascript/particle.js' %}"></script>
+
+  {% if form %}
+  <form method="post" style="margin-top:10px; position: relative; z-index: 3; display: block; width: 51%; margin-left: 26%;">
+    {% csrf_token %}
+    <div class="fieldWrapper" style="display: block;">
+      <input type="text"
+       name="{{ form.query.name }}"
+       id="{{ form.query.id_for_label }}"
+       {% if form.query.value != None %}value="{{ form.query.value|stringformat:'s' }}"{% endif %}
+       maxlength="{{ form.query.field.max_length }}"
+       {% if form.query.field.required %}required{% endif %} style="width: 100%; font-size: 27px; margin-bottom: 5px;">
+    </div>
+    <div>
+      <button type="submit" class="button_static">Search</button>
+    </div>
+  </form>
+  {% endif %}
 
   <div class="container-icon" id="options">
     <div class="wrapper">
@@ -47,21 +82,21 @@
               </header> -->
               <ul class="options">
                 <li>
-                  <a href="#" class="hvr-float-shadow">
+                  <a href="{% url 'search' 'btc_block' %}" class="hvr-float-shadow">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
                     Bitcoin Block
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="hvr-float-shadow">
+                  <a href="{% url 'search' 'btc_block_overview' %}" class="hvr-float-shadow">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
-                    Bitcoin Date
+                    Bitcoin Block Overview
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="hvr-float-shadow">
+                  <a href="{% url 'search' 'btc_address' %}" class="hvr-float-shadow">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
                     Bitcoin Address
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
@@ -84,14 +119,14 @@
               </header> -->
               <ul class="options">
                 <li>
-                  <a href="#" class="hvr-wobble-to-top-right">
+                  <a href="{% url 'search' 'domain' %}" class="hvr-wobble-to-top-right">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
                     Domain name
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="hvr-wobble-to-bottom-right">
+                  <a href="{% url 'search' 'ip' %}" class="hvr-wobble-to-bottom-right">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
                     IP Address
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
@@ -114,7 +149,7 @@
               </header> -->
               <ul class="options">
                 <li>
-                  <a href="#" class="hvr-bounce-out">
+                  <a href="{% url 'search' 'email' %}" class="hvr-bounce-out">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
                     Mail Address
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
@@ -167,7 +202,7 @@
               </header> -->
               <ul class="options">
                 <li>
-                  <a href="#" class="hvr-wobble-horizontal">
+                  <a href="{% url 'search' 'device' %}" class="hvr-wobble-horizontal">
                     <i class="fa fa-chevron-circle-left hvr-icon"></i>
                     Device Name
                     <i class="fa fa-chevron-circle-right hvr-icon"></i>
@@ -272,7 +307,7 @@
 
 
       <li class="nav-item">
-        <a href="./index.html" class="nav-link">
+        <a href="{% url 'index' %}" class="nav-link">
           <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-shuttle" role="img"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
             class="svg-inline--fa fa-space-shuttle fa-w-20 fa-5x">
@@ -334,7 +369,7 @@
 
 
   <section class="page-section about-heading" id="about">
-    <div class="about-container"><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/wire.jpg" />
+    <div class="about-container"><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="../../static/img/wire.jpg" />
       <div class="about-heading-content">
         <div class="row">
           <div class="col-lg-10 col-xl-9 mx-auto">
@@ -365,7 +400,7 @@
   <section id="team" class="bg-light">
     <div class="row">
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/Sayam Kumar ASE.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/Sayam%20Kumar%20ASE.jpg" />
           <h4>Sayam Kumar</h4>
           <p class="text-muted">API Logic</p>
           <ul class="list-inline social-buttons">
@@ -397,7 +432,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/pp.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/pp.jpg" />
           <h4>Pradum Singh</h4>
           <p class="text-muted">Frontend Designer</p>
           <ul class="list-inline social-buttons">
@@ -429,7 +464,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/nethra.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/nethra.jpg" />
           <h4>Gunti Nethra</h4>
           <p class="text-muted">Backend Designer</p>
           <ul class="list-inline social-buttons">
@@ -461,7 +496,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto isha" src="img/isha.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto isha" src="../../static/img/isha.jpg" />
           <h4>Isha Aggarwal</h4>
           <p class="text-muted">Software Testing</p>
           <ul class="list-inline social-buttons">
@@ -493,7 +528,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/sushant.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/sushant.jpg" />
           <h4>Sushant Bondle</h4>
           <p class="text-muted">Documentation</p>
           <ul class="list-inline social-buttons">
@@ -525,7 +560,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="team-member"><img class="rounded-circle mx-auto" src="img/dasari.jpg" />
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/dasari.jpg" />
           <h4>Dasari Jayasree</h4>
           <p class="text-muted">Deployment</p>
           <ul class="list-inline social-buttons">

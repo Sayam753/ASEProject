@@ -7,7 +7,11 @@ from blockcypher import get_blockchain_overview, get_address_details, get_block_
 
 # Create your views here.
 def home(request):
-    return render(request, 'search/landing.html')
+    return render(request, 'search/osint.html')
+
+
+def index(request):
+    return render(request, 'search/index.html')
 
 
 def query(request, argument):
@@ -17,9 +21,15 @@ def query(request, argument):
             arg = form.cleaned_data.get('query')
             response = None
             if argument == "btc_block_overview":
-                response = get_block_overview(arg)
+                try:
+                    response = get_block_overview(arg)
+                except AssertionError:
+                    response = {'error': 'invalid input'}
             elif argument == "btc_address":
-                response = get_address_details(arg)
+                try:
+                    response = get_address_details(arg)
+                except AssertionError:
+                    response = {'error': 'invalid input'}
             elif argument == "domain":
                 response = get_company_detail(arg)
             elif argument == "email":
@@ -35,4 +45,4 @@ def query(request, argument):
             response = get_blockchain_overview()
             return render(request, 'search/random.html', {'response': response})
         form = SearchForm()
-    return render(request, 'search/searchform.html', {'form': form})
+    return render(request, 'search/osint.html', {'form': form})

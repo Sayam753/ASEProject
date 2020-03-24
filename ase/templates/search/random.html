@@ -1,0 +1,25 @@
+{% extends "search/base.html" %}
+{% block content %}
+{% load isinstance_tag %}
+{% load any_tag %}
+  {% for key, value in response.items %}
+    {% if value|isinstance_tag:'dict' %}
+      {% if value|any_tag:'check' %}
+        <p>{{ key.capitalize }}:: </p>
+        {% for sub_key, sub_value in value.items %}
+          {% if sub_value %}
+            <p style="margin-left: 50px;">{{ sub_key.capitalize }}:: {{ sub_value }}</p>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+    {% else %}
+      {% if value %}
+        <p>{{ key.capitalize }}:: {{value}}</p>
+      {% endif %}
+
+    {% endif %}
+
+  {% endfor %}
+{% endblock content %}
+
