@@ -6,7 +6,7 @@ All you have to do is just have to pass values to parameter.
 In order to start OSINT-SPY just write
 ::
 
-    python osint-spy.com
+    python osint-spy.py
 
 
 --btc_block
