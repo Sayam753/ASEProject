@@ -36,6 +36,7 @@ Technical Details
 4. For search bar, I have rendered a ModelForm
 5. I have combined all searches into one function named query following a DRY approach.
 6. For rendering json to html, I used templatetags of Django and populated fields using Jinja template
+I also learnt Pytest for testing, Sphinx for documentation and will be using my already written blogs to deploy the website.
 
 Challenges Faced
 ----------------
