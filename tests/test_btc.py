@@ -31,6 +31,9 @@ def test_btc_block_date_address(url, err_no, extras):
 	else:
 		try:
 			response = response.json()	
+		except json.decoder.JSONDecodeError:  #(Due to corrupted json response from the server)
+			assert True
+		else:
 			assert response["err_no"] == err_no
 			if extras == "Check empty list":
 				assert len(response["data"]) == 0
@@ -42,5 +45,4 @@ def test_btc_block_date_address(url, err_no, extras):
 				assert response["err_msg"] == "bad params: {}".format(url.split('/')[-1])	
 			else:
 				pass
-		except json.decoder.JSONDecodeError:  #(Due to corrupted json response from the server)
-			assert True				
+							
