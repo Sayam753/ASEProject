@@ -1,0 +1,55 @@
+ASE Project - OSINT-SPY
+Group 11 - 
+Project Report - Phase 1 Evaluations
+
+Submitted By - Sayam Kumar
+Roll No - S20180010158
+
+What am I working at?
+----------------------
+
+My main task is to capture information available from various public resources. This information has to integrated with both Frontend and Backend
+
+What technologies am I using?
+-----------------------------
+
+I have used python libraries to make the process of capturing information easier.
+1. Requests Library - To send requests to dedicated urls using APIs.
+2. Json Library - To format the response in json
+3. Argparser Library - To parse custom argument to python file
+4. Time Library - To check for internet connection timeouts
+5. Blockcypher Library - To capture information about bitcoins
+
+APIs used - 
+1. Clear bit API - To find info about domain names
+2. Shodan API - To find info about IP and devices
+3. Full Contact API - To find info about emails
+4. Virus Total API - To scan against malwares
+5. Email Hunter API - To extract emails for a domain name
+
+Technical Details
+-----------------
+
+1. The workflow of capturing the information is - First send the request, format the response in json, look for errors, send the reponse to frontend.
+2. This work is closely integrated Frontend, Backend and Testing of code.
+3. I have made a Django app named search for this.
+4. For search bar, I have rendered a ModelForm
+5. I have combined all searches into one function named query following a DRY approach.
+6. For rendering json to html, I used templatetags of Django and populated fields using Jinja template
+I also learnt Pytest for testing, Sphinx for documentation and will be using my already written blogs to deploy the website.
+
+Challenges Faced
+----------------
+
+Ran into problems using templatetags in Django and Jinja template.
+Also took time to account for errors in handling cases in API
+
+Future Plan
+-----------
+
+Add support of Malware, Ssl, Sitemaps, Twitter Monitoring and Facebook Monitoring
+
+References
+----------
+
+Documentation of APIs mentioned above
