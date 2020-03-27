@@ -1,0 +1,608 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles/osint.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/team.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/about.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/hover.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+2&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
+
+  <script defer src="{% static 'javascript/theme.js' %}"></script>
+  <script src="https://kit.fontawesome.com/68c9f8e124.js" crossorigin="anonymous"></script>
+  <style>
+    .button_static {
+      width: 100%;
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      transition-duration: 0.5s;
+      background-color: #0040ff;
+      color: white;
+      cursor: pointer;
+    }
+    .button_static:hover {
+      background-color: #ff4b00;
+      color: white;
+    }
+  </style>
+  <title>ASE Project</title>
+</head>
+
+<body id="page-top">
+
+
+  <canvas id="nokey" width="800" height="800"></canvas>
+  <link rel="stylesheet" href="{% static 'styles/particle.css' %}">
+  <script src="{% static 'javascript/particle.js' %}"></script>
+
+  {% if form %}
+  <form method="post" style="margin-top:10px; position: relative; z-index: 3; display: block; width: 51%; margin-left: 26%;">
+    {% csrf_token %}
+    <div class="fieldWrapper" style="display: block;">
+      <input type="text"
+       name="{{ form.query.name }}"
+       id="{{ form.query.id_for_label }}"
+       {% if form.query.value != None %}value="{{ form.query.value|stringformat:'s' }}"{% endif %}
+       maxlength="{{ form.query.field.max_length }}"
+       {% if form.query.field.required %}required{% endif %} style="width: 100%; font-size: 27px; margin-bottom: 5px;">
+    </div>
+    <div>
+      <button type="submit" class="button_static">Search</button>
+    </div>
+  </form>
+  {% endif %}
+
+  <div class="container-icon" id="options">
+    <div class="wrapper">
+      <ul class="stage">
+        <li class="scene">
+          <div class="movie">
+            <div class="poster"></div>
+            <div class="info">
+              <!-- <header>
+                <h1>It's a Wonderful Life</h1>
+                 <span class="year">1946</span>
+                <span class="rating">PG</span>
+                <span class="duration">130 minutes</span>
+              </header> -->
+              <ul class="options">
+                <li>
+                  <a href="{% url 'search' 'btc_block' %}" class="hvr-float-shadow">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    Bitcoin Block
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'search' 'btc_block_overview' %}" class="hvr-float-shadow">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    Bitcoin Block Overview
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'search' 'btc_address' %}" class="hvr-float-shadow">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    Bitcoin Address
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="scene">
+          <div class="movie">
+            <div class="poster"></div>
+            <div class="info">
+              <!-- <header>
+                <h1>It's a Wonderful Life</h1>
+                <span class="year">1946</span>
+                <span class="rating">PG</span>
+                <span class="duration">130 minutes</span>
+              </header> -->
+              <ul class="options">
+                <li>
+                  <a href="{% url 'search' 'domain' %}" class="hvr-wobble-to-top-right">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    Domain name
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'search' 'ip' %}" class="hvr-wobble-to-bottom-right">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    IP Address
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="scene">
+          <div class="movie">
+            <div class="poster"></div>
+            <div class="info">
+              <!-- <header>
+                <h1>It's a Wonderful Life</h1>
+                <span class="year">1946</span>
+                <span class="rating">PG</span>
+                <span class="duration">130 minutes</span>
+              </header> -->
+              <ul class="options">
+                <li>
+                  <a href="{% url 'search' 'email' %}" class="hvr-bounce-out">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    Mail Address
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+               </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="scene">
+          <div class="movie">
+            <div class="poster"></div>
+            <div class="info">
+              <!-- <header>
+                <h1>It's a Wonderful Life</h1>
+                <span class="year">1946</span>
+                <span class="rating">PG</span>
+                <span class="duration">130 minutes</span>
+              </header> -->
+              <ul class="options">
+                <li>
+                  <a href="#" class="hvr-grow-rotate">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    SSL Cipher
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="hvr-grow-rotate">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    SSL Bleed
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="scene">
+          <div class="movie">
+            <div class="poster"></div>
+            <div class="info">
+              <!-- <header>
+                <h1>It's a Wonderful Life</h1>
+                <span class="year">1946</span>
+                <span class="rating">PG</span>
+                <span class="duration">130 minutes</span>
+              </header> -->
+              <ul class="options">
+                <li>
+                  <a href="{% url 'search' 'device' %}" class="hvr-wobble-horizontal">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                    Device Name
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+                </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="scene">
+          <div class="movie">
+            <div class="poster"></div>
+            <div class="info">
+              <!-- <header>
+                <h1>It's a Wonderful Life</h1>
+                <span class="year">1946</span>
+                <span class="rating">PG</span>
+                <span class="duration">130 minutes</span>
+              </header> -->
+              <ul class="options">
+                <li>
+                  <a href="#" class="hvr-sink">
+                    <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                      Malware
+                    <i class="fa fa-chevron-circle-right hvr-icon"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
+        <a href="#" class="nav-link">
+          <span class="link-text logo-text">OSINT</span>
+
+          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="battle-net"
+            class="svg-inline--fa fa-battle-net fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M448.61 225.62c26.87.18 35.57-7.43 38.92-12.37 12.47-16.32-7.06-47.6-52.85-71.33 17.76-33.58 30.11-63.68 36.34-85.3 3.38-11.83 1.09-19 .45-20.25-1.72 10.52-15.85 48.46-48.2 100.05-25-11.22-56.52-20.1-93.77-23.8-8.94-16.94-34.88-63.86-60.48-88.93C252.18 7.14 238.7 1.07 228.18.22h-.05c-13.83-1.55-22.67 5.85-27.4 11-17.2 18.53-24.33 48.87-25 84.07-7.24-12.35-17.17-24.63-28.5-25.93h-.18c-20.66-3.48-38.39 29.22-36 81.29-38.36 1.38-71 5.75-93 11.23-9.9 2.45-16.22 7.27-17.76 9.72 1-.38 22.4-9.22 111.56-9.22 5.22 53 29.75 101.82 26 93.19-9.73 15.4-38.24 62.36-47.31 97.7-5.87 22.88-4.37 37.61.15 47.14 5.57 12.75 16.41 16.72 23.2 18.26 25 5.71 55.38-3.63 86.7-21.14-7.53 12.84-13.9 28.51-9.06 39.34 7.31 19.65 44.49 18.66 88.44-9.45 20.18 32.18 40.07 57.94 55.7 74.12a39.79 39.79 0 0 0 8.75 7.09c5.14 3.21 8.58 3.37 8.58 3.37-8.24-6.75-34-38-62.54-91.78 22.22-16 45.65-38.87 67.47-69.27 122.82 4.6 143.29-24.76 148-31.64 14.67-19.88 3.43-57.44-57.32-93.69zm-77.85 106.22c23.81-37.71 30.34-67.77 29.45-92.33 27.86 17.57 47.18 37.58 49.06 58.83 1.14 12.93-8.1 29.12-78.51 33.5zM216.9 387.69c9.76-6.23 19.53-13.12 29.2-20.49 6.68 13.33 13.6 26.1 20.6 38.19-40.6 21.86-68.84 12.76-49.8-17.7zm215-171.35c-10.29-5.34-21.16-10.34-32.38-15.05a722.459 722.459 0 0 0 22.74-36.9c39.06 24.1 45.9 53.18 9.64 51.95zM279.18 398c-5.51-11.35-11-23.5-16.5-36.44 43.25 1.27 62.42-18.73 63.28-20.41 0 .07-25 15.64-62.53 12.25a718.78 718.78 0 0 0 85.06-84q13.06-15.31 24.93-31.11c-.36-.29-1.54-3-16.51-12-51.7 60.27-102.34 98-132.75 115.92-20.59-11.18-40.84-31.78-55.71-61.49-20-39.92-30-82.39-31.57-116.07 12.3.91 25.27 2.17 38.85 3.88-22.29 36.8-14.39 63-13.47 64.23 0-.07-.95-29.17 20.14-59.57a695.23 695.23 0 0 0 44.67 152.84c.93-.38 1.84.88 18.67-8.25-26.33-74.47-33.76-138.17-34-173.43 20-12.42 48.18-19.8 81.63-17.81 44.57 2.67 86.36 15.25 116.32 30.71q-10.69 15.66-23.33 32.47C365.63 152 339.1 145.84 337.5 146c.11 0 25.9 14.07 41.52 47.22a717.63 717.63 0 0 0-115.34-31.71 646.608 646.608 0 0 0-39.39-6.05c-.07.45-1.81 1.85-2.16 20.33C300 190.28 358.78 215.68 389.36 233c.74 23.55-6.95 51.61-25.41 79.57-24.6 37.31-56.39 67.23-84.77 85.43zm27.4-287c-44.56-1.66-73.58 7.43-94.69 20.67 2-52.3 21.31-76.38 38.21-75.28C267 52.15 305 108.55 306.58 111zm-130.65 3.1c.48 12.11 1.59 24.62 3.21 37.28-14.55-.85-28.74-1.25-42.4-1.26-.08 3.24-.12-51 24.67-49.59h.09c5.76 1.09 10.63 6.88 14.43 13.57zm-28.06 162c20.76 39.7 43.3 60.57 65.25 72.31-46.79 24.76-77.53 20-84.92 4.51-.2-.21-11.13-15.3 19.67-76.81zm210.06 74.8">
+            </path>
+          </svg>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#options" class="nav-link">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="house-damage"
+            class="svg-inline--fa fa-house-damage fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512">
+            <path fill="currentColor"
+              d="M288 114.96L69.47 307.71c-1.62 1.46-3.69 2.14-5.47 3.35V496c0 8.84 7.16 16 16 16h149.23L192 439.19l104.11-64-60.16-119.22L384 392.75l-104.11 64L319.81 512H496c8.84 0 16-7.16 16-16V311.1c-1.7-1.16-3.72-1.82-5.26-3.2L288 114.96zm282.69 121.32L512 184.45V48c0-8.84-7.16-16-16-16h-64c-8.84 0-16 7.16-16 16v51.69L314.75 10.31C307.12 3.45 297.56.01 288 0s-19.1 3.41-26.7 10.27L5.31 236.28c-6.57 5.91-7.12 16.02-1.21 22.6l21.4 23.82c5.9 6.57 16.02 7.12 22.6 1.21L277.42 81.63c6.05-5.33 15.12-5.33 21.17 0L527.91 283.9c6.57 5.9 16.69 5.36 22.6-1.21l21.4-23.82c5.9-6.57 5.36-16.69-1.22-22.59z">
+            </path>
+          </svg>
+          <span class="link-text">Home</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#about" class="nav-link">
+          <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-station-moon-alt" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+            class="svg-inline--fa fa-space-station-moon-alt fa-w-16 fa-5x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                d="M501.70312,224H448V160H368V96h48V66.67383A246.86934,246.86934,0,0,0,256,8C119.03125,8,8,119.0332,8,256a250.017,250.017,0,0,0,1.72656,28.26562C81.19531,306.76953,165.47656,320,256,320s174.80469-13.23047,246.27344-35.73438A250.017,250.017,0,0,0,504,256,248.44936,248.44936,0,0,0,501.70312,224ZM192,240a80,80,0,1,1,80-80A80.00021,80.00021,0,0,1,192,240ZM384,343.13867A940.33806,940.33806,0,0,1,256,352c-87.34375,0-168.71094-11.46094-239.28906-31.73633C45.05859,426.01953,141.29688,504,256,504a247.45808,247.45808,0,0,0,192-91.0918V384H384Z"
+                class="fa-secondary"></path>
+              <path fill="currentColor"
+                d="M256,320c-90.52344,0-174.80469-13.23047-246.27344-35.73438a246.11376,246.11376,0,0,0,6.98438,35.998C87.28906,340.53906,168.65625,352,256,352s168.71094-11.46094,239.28906-31.73633a246.11376,246.11376,0,0,0,6.98438-35.998C430.80469,306.76953,346.52344,320,256,320Zm-64-80a80,80,0,1,0-80-80A80.00021,80.00021,0,0,0,192,240Zm0-104a24,24,0,1,1-24,24A23.99993,23.99993,0,0,1,192,136Z"
+                class="fa-primary"></path>
+            </g>
+          </svg>
+          <span class="link-text">About</span>
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+        <a href="#team" class="nav-link">
+          <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="alien-monster" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+            class="svg-inline--fa fa-alien-monster fa-w-18 fa-9x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                d="M560,128H528a15.99954,15.99954,0,0,0-16,16v80H480V176a15.99954,15.99954,0,0,0-16-16H416V96h48a16.00079,16.00079,0,0,0,16-16V48a15.99954,15.99954,0,0,0-16-16H432a15.99954,15.99954,0,0,0-16,16V64H368a15.99954,15.99954,0,0,0-16,16v48H224V80a15.99954,15.99954,0,0,0-16-16H160V48a15.99954,15.99954,0,0,0-16-16H112A15.99954,15.99954,0,0,0,96,48V80a16.00079,16.00079,0,0,0,16,16h48v64H112a15.99954,15.99954,0,0,0-16,16v48H64V144a15.99954,15.99954,0,0,0-16-16H16A15.99954,15.99954,0,0,0,0,144V272a16.00079,16.00079,0,0,0,16,16H64v80a16.00079,16.00079,0,0,0,16,16h48v80a16.00079,16.00079,0,0,0,16,16h96a16.00079,16.00079,0,0,0,16-16V432a15.99954,15.99954,0,0,0-16-16H192V384H384v32H336a15.99954,15.99954,0,0,0-16,16v32a16.00079,16.00079,0,0,0,16,16h96a16.00079,16.00079,0,0,0,16-16V384h48a16.00079,16.00079,0,0,0,16-16V288h48a16.00079,16.00079,0,0,0,16-16V144A15.99954,15.99954,0,0,0,560,128ZM224,320H160V224h64Zm192,0H352V224h64Z"
+                class="fa-secondary"></path>
+              <path fill="currentColor" d="M160,320h64V224H160Zm192-96v96h64V224Z" class="fa-primary"></path>
+            </g>
+          </svg>
+          <span class="link-text">Who we are?</span>
+        </a>
+      </li>
+
+
+
+      <li class="nav-item">
+        {%if user.is_authenticated%}
+          <a href="{% url 'logout' %}" class="nav-link">
+        {%else%}
+          <a href="{% url 'register' %}" class="nav-link">
+        {%endif%}
+
+          <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-shuttle" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+            class="svg-inline--fa fa-space-shuttle fa-w-20 fa-5x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                d="M32 416c0 35.35 21.49 64 48 64h16V352H32zm154.54-232h280.13L376 168C243 140.59 222.45 51.22 128 34.65V160h18.34a45.62 45.62 0 0 1 40.2 24zM32 96v64h64V32H80c-26.51 0-48 28.65-48 64zm114.34 256H128v125.35C222.45 460.78 243 371.41 376 344l90.67-16H186.54a45.62 45.62 0 0 1-40.2 24z"
+                class="fa-secondary"></path>
+              <path fill="currentColor"
+                d="M592.6 208.24C559.73 192.84 515.78 184 472 184H186.54a45.62 45.62 0 0 0-40.2-24H32c-23.2 0-32 10-32 24v144c0 14 8.82 24 32 24h114.34a45.62 45.62 0 0 0 40.2-24H472c43.78 0 87.73-8.84 120.6-24.24C622.28 289.84 640 272 640 256s-17.72-33.84-47.4-47.76zM488 296a8 8 0 0 1-8-8v-64a8 8 0 0 1 8-8c31.91 0 31.94 80 0 80z"
+                class="fa-primary"></path>
+            </g>
+          </svg>
+          {%if user.is_authenticated%}
+            <span class="link-text">Logout</span>
+          {%else%}
+            <span class="link-text">Login/Register</span>
+          {%endif%}
+        </a>
+      </li>
+
+      <li class="nav-item" id="themeButton">
+        <a class="nav-link">
+          <svg class="theme-icon" id="lightIcon" aria-hidden="true" focusable="false" data-prefix="fad"
+            data-icon="moon-stars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+            class="svg-inline--fa fa-moon-stars fa-w-16 fa-7x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                d="M320 32L304 0l-16 32-32 16 32 16 16 32 16-32 32-16zm138.7 149.3L432 128l-26.7 53.3L352 208l53.3 26.7L432 288l26.7-53.3L512 208z"
+                class="fa-secondary"></path>
+              <path fill="currentColor"
+                d="M332.2 426.4c8.1-1.6 13.9 8 8.6 14.5a191.18 191.18 0 0 1-149 71.1C85.8 512 0 426 0 320c0-120 108.7-210.6 227-188.8 8.2 1.6 10.1 12.6 2.8 16.7a150.3 150.3 0 0 0-76.1 130.8c0 94 85.4 165.4 178.5 147.7z"
+                class="fa-primary"></path>
+            </g>
+          </svg>
+          <svg class="theme-icon" id="solarIcon" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="sun"
+            role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+            class="svg-inline--fa fa-sun fa-w-16 fa-7x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                d="M502.42 240.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.41-94.8a17.31 17.31 0 0 0-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4a17.31 17.31 0 0 0 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.41-33.5 47.3 94.7a17.31 17.31 0 0 0 31 0l47.31-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3a17.33 17.33 0 0 0 .2-31.1zm-155.9 106c-49.91 49.9-131.11 49.9-181 0a128.13 128.13 0 0 1 0-181c49.9-49.9 131.1-49.9 181 0a128.13 128.13 0 0 1 0 181z"
+                class="fa-secondary"></path>
+              <path fill="currentColor" d="M352 256a96 96 0 1 1-96-96 96.15 96.15 0 0 1 96 96z" class="fa-primary">
+              </path>
+            </g>
+          </svg>
+          <svg class="theme-icon" id="darkIcon" aria-hidden="true" focusable="false" data-prefix="fad"
+            data-icon="sunglasses" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+            class="svg-inline--fa fa-sunglasses fa-w-18 fa-7x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                d="M574.09 280.38L528.75 98.66a87.94 87.94 0 0 0-113.19-62.14l-15.25 5.08a16 16 0 0 0-10.12 20.25L395.25 77a16 16 0 0 0 20.22 10.13l13.19-4.39c10.87-3.63 23-3.57 33.15 1.73a39.59 39.59 0 0 1 20.38 25.81l38.47 153.83a276.7 276.7 0 0 0-81.22-12.47c-34.75 0-74 7-114.85 26.75h-73.18c-40.85-19.75-80.07-26.75-114.85-26.75a276.75 276.75 0 0 0-81.22 12.45l38.47-153.8a39.61 39.61 0 0 1 20.38-25.82c10.15-5.29 22.28-5.34 33.15-1.73l13.16 4.39A16 16 0 0 0 180.75 77l5.06-15.19a16 16 0 0 0-10.12-20.21l-15.25-5.08A87.95 87.95 0 0 0 47.25 98.65L1.91 280.38A75.35 75.35 0 0 0 0 295.86v70.25C0 429 51.59 480 115.19 480h37.12c60.28 0 110.38-45.94 114.88-105.37l2.93-38.63h35.76l2.93 38.63c4.5 59.43 54.6 105.37 114.88 105.37h37.12C524.41 480 576 429 576 366.13v-70.25a62.67 62.67 0 0 0-1.91-15.5zM203.38 369.8c-2 25.9-24.41 46.2-51.07 46.2h-37.12C87 416 64 393.63 64 366.11v-37.55a217.35 217.35 0 0 1 72.59-12.9 196.51 196.51 0 0 1 69.91 12.9zM512 366.13c0 27.5-23 49.87-51.19 49.87h-37.12c-26.69 0-49.1-20.3-51.07-46.2l-3.12-41.24a196.55 196.55 0 0 1 69.94-12.9A217.41 217.41 0 0 1 512 328.58z"
+                class="fa-secondary"></path>
+              <path fill="currentColor"
+                d="M64.19 367.9c0-.61-.19-1.18-.19-1.8 0 27.53 23 49.9 51.19 49.9h37.12c26.66 0 49.1-20.3 51.07-46.2l3.12-41.24c-14-5.29-28.31-8.38-42.78-10.42zm404-50l-95.83 47.91.3 4c2 25.9 24.38 46.2 51.07 46.2h37.12C489 416 512 393.63 512 366.13v-37.55a227.76 227.76 0 0 0-43.85-10.66z"
+                class="fa-primary"></path>
+            </g>
+          </svg>
+          <span class="link-text">Themify</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <section class="page-section about-heading" id="about">
+    <div class="about-container"><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="../../static/img/wire.jpg" />
+      <div class="about-heading-content">
+        <div class="row">
+          <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="bg-faded rounded p-5">
+              <h2 class="section-heading mb-4"><span class="section-heading-upper">What is this all about?</span><span
+                  class="section-heading-lower"> About Our Project</span></h2>
+              <p>Open-source intelligence (OSINT) is data collected from publicly available sources to be used in an
+                intelligence context. In the intelligence community, the term "open" refers to overt, publicly available
+                sources (as opposed to covert or clandestine sources). It is not related to open-source software or
+                collective intelligence.
+
+                OSINT under one name or another has been around for hundreds of years. With the advent of instant
+                communications and rapid information transfer, a great deal of actionable and predictive intelligence
+                can now be obtained from public, unclassified sources.</p>
+              <p class="mb-0"><span>Open Source Intelligence (OSINT) is the collection and analysis of information that
+                  is gathered from public, or open, sources. OSINT is primarily used in national security, law
+                  enforcement, and business intelligence functions and is of value to analysts who use non-sensitive
+                  intelligence in answering classified, unclassified, or proprietary intelligence requirements across
+                  the previous intelligence disciplines.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="team" class="bg-light">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/Sayam%20Kumar%20ASE.jpg" />
+          <h4>Sayam Kumar</h4>
+          <p class="text-muted">API Logic</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item"><a href="https://twitter.com/sayamkumar753">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                  class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="https://www.facebook.com/profile.php?id=100004385058227">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
+                  class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="mailto:sayamkumar049@gmail.com">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
+                  class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z">
+                  </path>
+                </svg></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/pp.jpg" />
+          <h4>Pradum Singh</h4>
+          <p class="text-muted">Frontend Designer</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item"><a href="https://twitter.com/PradumS16457175">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                  class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="https://www.facebook.com/pradum2216">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
+                  class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="mailto:pradum2216@gmail.com">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
+                  class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z">
+                  </path>
+                </svg></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/nethra.jpg" />
+          <h4>Gunti Nethra</h4>
+          <p class="text-muted">Backend Designer</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item"><a href="https://twitter.com/nethra160201">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                  class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
+                  class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="mailto:nethra.g18@iiits.in">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
+                  class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z">
+                  </path>
+                </svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="team-member"><img class="rounded-circle mx-auto isha" src="../../static/img/isha.jpg" />
+          <h4>Isha Aggarwal</h4>
+          <p class="text-muted">Software Testing</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                  class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
+                  class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
+                  class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z">
+                  </path>
+                </svg></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/sushant.jpg" />
+          <h4>Sushant Bondle</h4>
+          <p class="text-muted">Documentation</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                  class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="https://facebook.com/sushant.bondle.5">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
+                  class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="mailto:sushantsuryakant.b18@iiits.in">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
+                  class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z">
+                  </path>
+                </svg></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="team-member"><img class="rounded-circle mx-auto" src="../../static/img/dasari.jpg" />
+          <h4>Dasari Jayasree</h4>
+          <p class="text-muted">Deployment</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                  class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook"
+                  class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                  </path>
+                </svg></a></li>
+            <li class="list-inline-item"><a href="#team">
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-plus-square"
+                  class="svg-inline--fa fa-google-plus-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512">
+                  <path fill="currentColor"
+                    d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z">
+                  </path>
+                </svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -56,7 +56,7 @@ ROOT_URLCONF = 'ase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +65,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries':{
+                'isinstance_tag': 'search.templatetags.isinstance_tag',
+                'any_tag': 'search.templatetags.any_tag',
+            }
         },
     },
 ]
@@ -120,5 +125,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-AUTH_USER_MODEL='users.user'
-LOGIN_REDIRECT_URL='main-search'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+AUTH_USER_MODEL = 'users.user'
+
+
+#REDIRECTING ROUTE POST LOGIN AND LOGOUT
+LOGIN_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL='home'
