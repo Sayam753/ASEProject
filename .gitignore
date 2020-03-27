@@ -1,0 +1,13 @@
+.idea/
+ase/db.sqlite3
+ase/search/migrations/
+ase/search/__pycache__/
+ase/search/modules/__pycache__/
+ase/search/templatetags/__pycache__/
+
+ase/users/__pycache__/
+ase/users/migrations/
+ase/ase/__pycache__/
+tests/__pycache__/
+.history/
+.vscode/

@@ -1,0 +1,71 @@
+                   DEPLOYMENT
+
+--> iam doing deployment is for transfer a file with high safety so iam using the below
+1)
+--> EC2
+   Amazon Elastic Compute Cloud (Amazon EC2) it gives scalable computing capacity in the Amazon Web Services (AWS) cloud. 
+   by using this EC2 it eliminates your need to invest in hardware up front, so you can develop and deploy applications faster. 
+   it is used to launch many or as few virtual servers as you need, it configure security and networking, and manage storage. 
+   
+->EC2 security groups
+     te grou of securty can acts as a virtual firewall that controls the traffic for one or more instances. 
+     the tiem we launch an instance, we can specify one or more security groups
+     otherwise, we use the default security group. 
+
+-> SSH
+   SSH uses the client-server model.
+   SSH(secure shell)is usually used to log into a remote machine and execute commands and  it also supports tunneling, forwarding TCP ports also X11 connections
+   ssh can transfer files using the associated SSH file transfer (SFTP) or secure copy (SCP) protocols.
+
+-> SSH KEYGEN
+    Ssh-keygen is a tool for creating new authentication key pairs for SSH. Such key pairs are used for automating logins, 
+    single sign-on, and for authenticating hosts.
+
+-> changing permission of the file
+    using chmod 400 jaya1 we can change the permissions in linux
+
+-> HTTP and ports, DNS
+    DNS is only points to the IP address and has no concept of ports for older protocols such as HTTP, HTTPS, and SSL. 
+    The port to connect to for a particular service is determined by convention.
+
+-> CENTOS
+   it is used for updates , it is better than ubantu for updating the system
+   CentOS is a Linux distribution (derived from Red Hat Enterprise Linux) 
+   it is  popular with system admins, DevOps engineers, and home users alike. 
+   It's also used by many organizations for development and production servers.
+
+2)for doing this everything iam using the below things
+ 1) AWS ,
+ 2)DJANGO , AND 
+ 3)CENTOS. 
+   
+
+3) here my work is to login AWS and downloding the files after that changing the file with security aspects
+
+-->Login to https://www.awseducate.com/signin/SiteLogin?ec=302&startURL=%2Fstudent%2Fs%2F
+   Click AWS Account -> AWS Educate Starter Account -> AWS Console->instance-> Choose (Amazon Linux 2 AMI (HVM), SSD Volume Type).->Choose 64-bit (x86) and click Select.- 
+--> We will use 1GiB memory, 1 CPU, and IPv6 support.
+--> now i just setput everything when we need to add access to HTTP to instance. This will help us to open our project website. 
+
+-->We do not want to show our project in our system. 
+  It will be better to have a .com url to access the project. 
+  so we are using AWS. After a few steps, you will see, we will have a .com for our created Centos Instance.
+-->to add HTTP to access our project
+   now iam  jump into Section 6. (Configure Security Group). 
+   Give any Security group name(like group name<jaya1>) Then add a rule.
+   Type - Http. For port range section, use 80. 
+   In source  use My Ip in both SSH and HTTP. Now finally move to Review and Launch. 
+
+--> Create a new key pair with any name(ex:file name as jaya1) And then download it.
+    The .pem file will be downloaded then iam accessed the server.
+
+-->Now you have .pem file. Change permissions of the file to 400 using chmod command($>chmod 440 jaya1) 
+   Now we ssh into server.
+-->from the terminal, 
+   ssh -i jaya1.pem ec2-user@ec2-54-234-189-46.compute-1.amazonaws.com
+
+
+experiance:
+  facing some issues when using chmod after that when using dns server ip address that may feel some difficulty
+  
+------------END THANK YOU-----------------
