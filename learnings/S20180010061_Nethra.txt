@@ -1,9 +1,0 @@
->   I'm working on the backend part. I'm making the django project by integrating the API Logic (by Sayyam) and the other user/app interface models. 
-
->   As of now, I'm using just the django and python libraries. I also plan on using 'django-allauth' for authentication via social media. Coming to editors I'm using Atom.
-
->   There is a register/login option for the user and upon successful task completion he will be redirected to the Search page which is our Home page. Upon getting the search request from the user it'll yeild the corressponding results with the help of API Logic and will be shown in a eye-pleasing way to the user.
-
->   The difficulties I've faced while getting the code to work would vary from mistakes as silly as adding the app to the settings to as difficult as not knowing how to handle the errors at all. In the beginning there was confusion in regard to the flow of the code from various .py files to modules but gradually got a hand on it.
-
->   References: Official django documentation and few helpful videos on YouTube.

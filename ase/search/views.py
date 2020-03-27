@@ -10,10 +10,6 @@ def home(request):
     return render(request, 'search/osint.html')
 
 
-def index(request):
-    return render(request, 'search/index.html')
-
-
 def query(request, argument):
     if request.method == "POST":
         form = SearchForm(request.POST)
