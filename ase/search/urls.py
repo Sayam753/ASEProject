@@ -3,6 +3,5 @@ from .views import home, query
 
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('search/<str:argument>', query, name='search'),
+    path('<str:argument>', query, name='search'),
 ]

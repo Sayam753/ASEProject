@@ -14,31 +14,43 @@ def query(request, argument):
     if request.method == "POST":
         form = SearchForm(request.POST)
         if form.is_valid():
-            arg = form.cleaned_data.get('query')
-            response = None
-            if argument == "btc_block_overview":
-                try:
-                    response = get_block_overview(arg)
-                except AssertionError:
-                    response = {'error': 'invalid input'}
-            elif argument == "btc_address":
-                try:
-                    response = get_address_details(arg)
-                except AssertionError:
-                    response = {'error': 'invalid input'}
-            elif argument == "domain":
-                response = get_company_detail(arg)
-            elif argument == "email":
-                response = fetch_email(arg)
-            elif argument == "device":
-                response = get_device(arg)
-            elif argument == "ip":
-                response = ip_details(arg)
+            if request.user.is_authenticated:
+                arg = form.cleaned_data.get('query')
+                response = None
+                if argument == "btc_block_overview":
+                    try:
+                        response = get_block_overview(arg)
+                    except AssertionError:
+                        response = {'error': 'invalid input'}
+                elif argument == "btc_address":
+                    try:
+                        response = get_address_details(arg)
+                    except AssertionError:
+                        response = {'error': 'invalid input'}
+                elif argument == "domain":
+                    response = get_company_detail(arg)
+                elif argument == "email":
+                    response = fetch_email(arg)
+                elif argument == "device":
+                    response = get_device(arg)
+                elif argument == "ip":
+                    response = ip_details(arg)
 
-            return render(request, 'search/random.html', {'response': response})
+
+                return render(request, 'search/random.html', {'response': response})
+
+            else:
+                return redirect('login')
+
+
     else:
-        if argument == "btc_block":
-            response = get_blockchain_overview()
-            return render(request, 'search/random.html', {'response': response})
-        form = SearchForm()
+        if request.user.is_authenticated:
+            if argument == "btc_block":
+                response = get_blockchain_overview()
+                return render(request, 'search/random.html', {'response': response})
+            form = SearchForm()
+
+        else:
+            return redirect('login')
+
     return render(request, 'search/osint.html', {'form': form})
