@@ -1,59 +1,44 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-import requests
-from .utils import format_dict
-from . import forms
+from .modules import *
+from .forms import SearchForm
+from blockcypher import get_blockchain_overview, get_address_details, get_block_overview
+
 
 # Create your views here.
-def get_btc_block(request):
-    if request.method=='GET':
-        url="https://chain.api.btc.com/v3/block/latest"
+def home(request):
+    return render(request, 'search/osint.html')
 
-        try:
-            response = requests.get(url)
-        except requests.exceptions.ConnectionError:
-            pass
-            # print("Unable to fetch data! Check your internet connection.")
-        except Exception as e:
-            pass
-            # print(e)
-        else:
-            if response.status_code == 403:
-                # print('Forbidden Access. Try after some time.')
-                return
 
-            response = response.json()
-
-            if response['err_no'] == 0:
-                data = response['data']
-                # if data:
-                #     if isinstance(data, list):
-                #         for item in data:
-                #             format_dict(item)
-                #             # print()
-                #     else:
-                #         format_dict(data)
-                # else:
-                #     pass
-                    # print('No related information found.')
-
-            else:
-                # print(f"Error Number:: {response['err_no']}")
-                # print(f"Error Message:: {response['err_msg']}")
-                url="https://chain.api.btc.com/v3/block/latest"
-
-    return render(request, 'search/random.html', {'response':response})
-
-def get_btc_date(request):
-    if request.method=='POST':
-        form=forms.SearchForm(request.POST)
+def query(request, argument):
+    if request.method == "POST":
+        form = SearchForm(request.POST)
         if form.is_valid():
-            form.save()
-            target=form.cleaned_data.get('target')
-            return redirect(f'btc-date/{target}')
+            arg = form.cleaned_data.get('query')
+            response = None
+            if argument == "btc_block_overview":
+                try:
+                    response = get_block_overview(arg)
+                except AssertionError:
+                    response = {'error': 'invalid input'}
+            elif argument == "btc_address":
+                try:
+                    response = get_address_details(arg)
+                except AssertionError:
+                    response = {'error': 'invalid input'}
+            elif argument == "domain":
+                response = get_company_detail(arg)
+            elif argument == "email":
+                response = fetch_email(arg)
+            elif argument == "device":
+                response = get_device(arg)
+            elif argument == "ip":
+                response = ip_details(arg)
 
+            return render(request, 'search/random.html', {'response': response})
     else:
-        form=forms.SearchForm()
-        print(form)
-
-    return render(request,'search/searchform.html',{'form':form})
+        if argument == "btc_block":
+            response = get_blockchain_overview()
+            return render(request, 'search/random.html', {'response': response})
+        form = SearchForm()
+    return render(request, 'search/osint.html', {'form': form})

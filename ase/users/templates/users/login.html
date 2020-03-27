@@ -1,19 +1,56 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    HELLPPPPP WORLONGEHUIZAWHED
-    <div style="text-align:center"><h2>Login</h2></div>
-    <div style="text-align:center">
-      <form method="post" id="form_login">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-      </form>
-    </div>
+{% extends "users/base.html" %}
+{% block content %}
 
-  </body>
-</html>
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up" ><label for="tab-2" class="tab"></label>
+
+
+    	<div class="login-form">
+        <div class="sign-in-htm">
+
+
+					{% if form.errors %}
+    				<p style="color: red">Email and Password don't match</p>
+					{% endif %}
+
+
+        <form method="POST" action="{%url 'login'%}">
+          {%csrf_token%}
+					<div class="group">
+						<label class="label">Username</label>
+						<input id="user" type="text" class="input" name="username" required="required">
+					</div>
+
+					<div class="group">
+						<label class="label">Password</label>
+						<input id="pass" type="password" class="input" name="password" required="required">
+					</div>
+
+          <div class="group">
+            <button type="submit" class="button" >Sign In</button>
+          </div>
+
+					<div class="group">
+						<input id="check" type="checkbox" class="check" checked>
+						<label><span class="icon"></span> Keep me Signed in</label>
+					</div>
+
+					<div class="hr"></div>
+					<br>
+					<div class="foot-lnk">
+						<a href="{%url 'register'%}">New to OSINT? Register Now.</a>
+						<br>
+						<br>
+						<a href="{%url 'password_reset'%}">Forgot Password?</a>
+          </div>
+
+
+        </form>
+			</div>
+
+
+
+
+
+    </div>
+{%endblock content%}

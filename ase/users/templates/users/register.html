@@ -1,20 +1,43 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>User Registration</h1>
-    <form method="post">
-      {%csrf_token%}
-      <fieldset class="form-group">
-          <legend class="border-bottom mb-4"> JOIN TODAYY</legend>
-          {{form}}
-      </fieldset>
-      <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Sign Up</button>
-      </div>
-    </form>
-  </body>
-</html>
+{% extends "users/base.html" %}
+{% block content %}
+
+
+
+<input id="tab-1" type="radio" name="tab" class="sign-in" ><label for="tab-1" class="tab"></label>
+<input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Sign Up</label>
+
+    	<div class="login-form">
+        <div class="sign-up-htm">
+
+
+          <form method="POST" action="{% url 'register'%}">
+            {%csrf_token%}
+
+              {% for field in form %}
+                <div class="group">
+                  <label for="{{fiel.id_for_label}}" class="label"> {{ field.html_name }} </label>
+                  {{ field }}
+                  {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+
+            <div class="group">
+              <button type="submit" class="button" >Register</button>
+            </div>
+
+
+          <div class="hr"></div>
+
+          <div class="foot-lnk">
+            <a href="{%url 'login'%}">Already Have an Account? Sign In.</a>
+          </div>
+
+          </form>
+        </div>
+
+
+    </div>
+
+{%endblock content%}

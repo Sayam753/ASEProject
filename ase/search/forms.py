@@ -1,6 +1,9 @@
-from .models import Search
 from django import forms
+from .models import Search
+
 
 class SearchForm(forms.ModelForm):
-    model=Search
-    fields=['target','result']
+    class Meta:
+        model = Search
+        fields = ['query']
+

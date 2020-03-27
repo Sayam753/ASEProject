@@ -1,0 +1,209 @@
+body {
+    font-family: Lora;
+    /* background: rgb(34,193,195); */
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-size: cover;
+  }
+  
+.page-section {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+  
+  #about {
+      padding: 0 300px 100px 250px;
+  }
+  
+  .about-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width:992px) {
+    .container {
+      max-width: 760px;
+    }
+  }
+  
+  @media (min-width:768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width:576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+  
+  @media (min-width:992px) {
+    .about-heading .about-heading-img {
+      position: relative;
+      z-index: 0;
+    }
+  }
+  
+  @media (min-width:992px) {
+    .mb-lg-0, .my-lg-0 {
+      margin-bottom: 0!important;
+    }
+  }
+
+  
+  @media (min-width:1200px) {
+    .col-xl-9 {
+      -ms-flex: 0 0 75%;
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+  }
+  
+  @media (min-width:992px) {
+    .col-lg-10 {
+      -ms-flex: 0 0 83.33333%;
+      flex: 0 0 83.33333%;
+      max-width: 83.33333%;
+    }
+  }
+      
+  
+  @media (min-width:992px) {
+    .about-heading .about-heading-img {
+      position: relative;
+      z-index: 0;
+    }
+  }
+  
+  @media (min-width:992px) {
+    .mb-lg-0, .my-lg-0 {
+      margin-bottom: 0!important;
+    }
+  }
+  
+  .mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+  }
+  
+  .rounded {
+    border-radius: .25rem!important;
+  }
+  
+  .img-fluid, .img-thumbnail {
+    max-width: 100%;
+  }
+  
+  img, svg {
+    vertical-align: middle;
+  }
+  
+  img {
+    border-style: none;
+  }
+  
+  @media (min-width:992px) {
+    .about-heading .about-heading-content {
+      margin-top: -5rem;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  .ml-auto, .mx-auto {
+    margin-left: auto!important;
+  }
+  
+  .mr-auto, .mx-auto {
+    margin-right: auto!important;
+  }
+  
+
+  .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-auto, .col-lg, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-auto, .col-md, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md-auto, .col-sm, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .bg-faded {
+    background-color: hsla(0,0%,100%,.85);
+  }
+  
+  .p-5 {
+    padding: 3rem!important;
+  }
+  
+  .rounded {
+    border-radius: .25rem!important;
+  }
+  
+  .section-heading {
+    text-transform: uppercase;
+  }
+  
+  .mb-4, .my-4 {
+    margin-bottom: 1.5rem!important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Raleway;
+  }
+  
+  .h2, h2 {
+    font-size: 2rem;
+  }
+  
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+  }
+ 
+  .section-heading .section-heading-upper {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  
+  
+
+  .section-heading .section-heading-lower {
+    display: block;
+    font-size: 3rem;
+    font-weight: 100;
+  }
+  
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+  }
+  
+  p {
+    line-height: 1.75;
+  }
+  
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+              
+  
