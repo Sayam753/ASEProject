@@ -25,7 +25,7 @@ SECRET_KEY = 'is@m24*g!o+&q(t70z=st9i+ntl2*m@qhlr47l3dq@hdr7p3zl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '49.37.132.175']
 
 
 # Application definition
@@ -143,4 +143,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'projectonosint1@gmail.com'
 EMAIL_HOST_PASSWORD = 'timepass123'
-
