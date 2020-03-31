@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'styles/team.css' %}">
   <link rel="stylesheet" href="{% static 'styles/about.css' %}">
   <link rel="stylesheet" href="{% static 'styles/hover.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/search_button.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
@@ -24,22 +25,6 @@
 
   <script defer src="{% static 'javascript/theme.js' %}"></script>
   <script src="https://kit.fontawesome.com/68c9f8e124.js" crossorigin="anonymous"></script>
-  <style>
-    .button_static {
-      width: 100%;
-      font-size: 20px;
-      padding: 10px;
-      border-radius: 8px;
-      transition-duration: 0.5s;
-      background-color: #0040ff;
-      color: white;
-      cursor: pointer;
-    }
-    .button_static:hover {
-      background-color: #ff4b00;
-      color: white;
-    }
-  </style>
   <title>ASE Project</title>
 </head>
 
@@ -51,18 +36,18 @@
   <script src="{% static 'javascript/particle.js' %}"></script>
 
   {% if form %}
-  <form method="post" style="margin-top:10px; position: relative; z-index: 3; display: block; width: 51%; margin-left: 26%;">
+  <form method="post" class="form_wrapper">
     {% csrf_token %}
-    <div class="fieldWrapper" style="display: block;">
-      <input type="text"
+    <div class="fieldWrapper" style="display: block; background-color: bisque;">
+      <input class="field" type="text" placeholder="Enter query here..."
        name="{{ form.query.name }}"
        id="{{ form.query.id_for_label }}"
        {% if form.query.value != None %}value="{{ form.query.value|stringformat:'s' }}"{% endif %}
        maxlength="{{ form.query.field.max_length }}"
-       {% if form.query.field.required %}required{% endif %} style="width: 100%; font-size: 27px; margin-bottom: 5px;">
+       {% if form.query.field.required %}required{% endif %}>
     </div>
-    <div>
-      <button type="submit" class="button_static">Search</button>
+    <div class="button_con">
+          <button class="button_static button_change" type="submit" >Search</button>
     </div>
   </form>
   {% endif %}
@@ -74,12 +59,7 @@
           <div class="movie">
             <div class="poster"></div>
             <div class="info">
-              <!-- <header>
-                <h1>It's a Wonderful Life</h1>
-                 <span class="year">1946</span>
-                <span class="rating">PG</span>
-                <span class="duration">130 minutes</span>
-              </header> -->
+              
               <ul class="options">
                 <li>
                   <a href="{% url 'search' 'btc_block' %}" class="hvr-float-shadow">
@@ -111,12 +91,7 @@
           <div class="movie">
             <div class="poster"></div>
             <div class="info">
-              <!-- <header>
-                <h1>It's a Wonderful Life</h1>
-                <span class="year">1946</span>
-                <span class="rating">PG</span>
-                <span class="duration">130 minutes</span>
-              </header> -->
+             
               <ul class="options">
                 <li>
                   <a href="{% url 'search' 'domain' %}" class="hvr-wobble-to-top-right">
@@ -141,12 +116,7 @@
           <div class="movie">
             <div class="poster"></div>
             <div class="info">
-              <!-- <header>
-                <h1>It's a Wonderful Life</h1>
-                <span class="year">1946</span>
-                <span class="rating">PG</span>
-                <span class="duration">130 minutes</span>
-              </header> -->
+          
               <ul class="options">
                 <li>
                   <a href="{% url 'search' 'email' %}" class="hvr-bounce-out">
@@ -164,12 +134,7 @@
           <div class="movie">
             <div class="poster"></div>
             <div class="info">
-              <!-- <header>
-                <h1>It's a Wonderful Life</h1>
-                <span class="year">1946</span>
-                <span class="rating">PG</span>
-                <span class="duration">130 minutes</span>
-              </header> -->
+              
               <ul class="options">
                 <li>
                   <a href="#" class="hvr-grow-rotate">
@@ -194,12 +159,7 @@
           <div class="movie">
             <div class="poster"></div>
             <div class="info">
-              <!-- <header>
-                <h1>It's a Wonderful Life</h1>
-                <span class="year">1946</span>
-                <span class="rating">PG</span>
-                <span class="duration">130 minutes</span>
-              </header> -->
+             
               <ul class="options">
                 <li>
                   <a href="{% url 'search' 'device' %}" class="hvr-wobble-horizontal">
@@ -217,12 +177,7 @@
           <div class="movie">
             <div class="poster"></div>
             <div class="info">
-              <!-- <header>
-                <h1>It's a Wonderful Life</h1>
-                <span class="year">1946</span>
-                <span class="rating">PG</span>
-                <span class="duration">130 minutes</span>
-              </header> -->
+           
               <ul class="options">
                 <li>
                   <a href="#" class="hvr-sink">
