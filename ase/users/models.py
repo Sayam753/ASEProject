@@ -7,6 +7,15 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 
 class user(AbstractUser):
+    """
+    -- Summary --
+    User model has the details of the user.
+    #Field Descriptions
+    > username is a character field with maximum possible length = 25 which is basically the username of the user and is unique for every user.
+    > email is the email id of the user
+    > phone_no is a character field, which is basically the phone number of the user
+    
+    """
     username=models.CharField(max_length=25, blank=False, null=False, unique=True)
     email=models.EmailField(_('email address'), unique=True)
     # first_name=models.CharField(max_length=30,blank=False, null=False)
