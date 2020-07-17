@@ -1,0 +1,73 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="subs.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="subs.js"></script>
+    </head>
+    <body>
+        <div class="signup-model">
+            <div class="signup-model-content">
+                <div class="signup-content">
+                    <p class="tagline">Choose a subscription to ROCK WITH!</p>
+                <div class="subscription-plan subscription-plan-1 selected">
+                    <div class="subscription-plan-content">
+                        <div class="content-header">
+                            <div class="pricing">
+                                <h2><span class="price price1">9.99</span> USD</h2>
+                                <p class="billing-frequency ng-binding">a month</p>
+                            </div>
+                        </div>
+                            <h2 class="product-title">Search Premium</h2>
+                            <p class="product-desc ng-binding">Standard search options. <br /><span class="bold">10 search free trial.</span></p>
+                            <div class="desktop-pay-frequency" ng-if="showExtendedSelector">
+                                <div class="desktop-pay-frequency-item monthly" tabindex="0">
+                                    <h2> STANDARD PLAN </h2>
+                                        <p class="ng-binding">9.99 USD </p>
+                                </div>
+                                <div class="desktop-pay-frequency-item yearly" tabindex="0">
+                                    <h2> VALUE PLAN </h2>
+                                    <p class="ng-binding">8.49 USD (6 MONTHS PRE-PAID) </p>
+                                </div>
+                            </div><!-- END desktop-pay-frequency -->
+                                <a class="start-trial-prod-action">
+                                    <span class="btn btn1 start-trial action"> PICK AN INSANLY CHEAP TRIAL </span>
+                                </a>
+                        </div>
+                </div><!-- END subscription-plan ******* PLAN 1 ********** -->
+                <div class="subscription-plan subscription-plan-2" ng-click="choosePlan(2)" tabindex="0">
+                    <div class="subscription-plan-content">
+                        <div class="content-header">
+                        <div class="pricing">
+                            <h2 class="price price2 ng-binding" aria-hidden="false"><span class="js-sub-price ng-binding">19.99</span> USD</h2>
+                            <p class="billing-frequency billing-frequency2 ng-binding">per search</p>
+                        </div> 
+                        </div>
+                        <h2 class="product-title"> Unlimited Bitching </h2>
+                        <p class="product-desc ng-binding">Unlimited searches related every option. Search whatever you feel like.<br />
+                            <span class="bold ng-binding ng-scope">10 searches free trial.</span>
+                        </p>
+                        <div class="desktop-pay-frequency">
+                            <div class="desktop-pay-frequency-item monthly1" tabindex="0">
+                                <h2> STANDARD PLAN </h2>
+                                <p class="ng-binding"> 19.99 USD </p> 
+                            </div>
+                            <div class="desktop-pay-frequency-item yearly1" tabindex="0">
+                                <h2> VALUE PLAN </h2>
+                                <p class="ng-binding"> 16.99 USD (6 MONTHS PRE-PAID) </p>
+                            </div>
+                        </div>
+                        <a class="start-trial-prod-action">
+                            <span class="btn btn2 start-trial action"> PICK AN INSANLY CHEAP TRIAL </span>
+                        </a>
+                    </div>
+                </div><!-- END subscription-plan ******* PLAN 2 ********** -->
+            </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    
+    </body>
+    </html>
