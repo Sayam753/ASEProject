@@ -2,10 +2,8 @@ from enum import IntEnum
 
 
 class SubscriptionState(IntEnum):
-    TRIAL_ACTIVE = 1
-    TRIAL_ENDED = 3
-    ACTIVE = 4
-    DEACTIVATED = 5
+    ACTIVE = 1
+    DEACTIVATED = 2
 
     @classmethod
     def choices(cls, do=None):

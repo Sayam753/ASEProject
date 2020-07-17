@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'payments.apps.PaymentsConfig',
     'search.apps.SearchConfig',
     'users.apps.UsersConfig',
     'subscriptions.apps.SubscriptionsConfig',
@@ -126,7 +127,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -137,11 +137,15 @@ LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
 
 
-
-
+#EMAIL BACKEND
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'projectonosint1@gmail.com'
 EMAIL_HOST_PASSWORD = 'timepass123'
+
+
+#STRIPE KEYS
+STRIPE_PUBLIC_KEY = 'pk_test_WoNz8yWKYKAkhvvZlxbAVOca00yAOCsb5u'
+STRIPE_PRIVATE_KEY = 'sk_test_u8LmRKW6qTslD9vu30qIvZWT00fiznQKky'
