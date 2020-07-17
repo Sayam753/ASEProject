@@ -25,7 +25,8 @@ SECRET_KEY = 'is@m24*g!o+&q(t70z=st9i+ntl2*m@qhlr47l3dq@hdr7p3zl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/']
+# Register your models here.
+ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '127.0.0.1']
 
 
 # Application definition
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/']
 INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'users.apps.UsersConfig',
+    'subscriptions.apps.SubscriptionsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,7 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-AUTH_USER_MODEL = 'users.user'
+AUTH_USER_MODEL = 'users.UserProfile'
 
 
 #REDIRECTING ROUTE POST LOGIN AND LOGOUT
