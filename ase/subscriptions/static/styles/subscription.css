@@ -1,0 +1,355 @@
+@font-face {
+    font-family: "nationale";
+    src: url("http://tidal.com/fonts/nationale-demibold-webfont.woff"), format("embedded-opentype"), url("http://tidal.com/fonts/nationale-regular-webfont.woff") format("woff"), url("http://tidal.com/fonts/nationale-regular-webfont.ttf") format("truetype"); }
+  html, body, div, span, applet, object, iframe, h1, h2, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    font: inherit;
+    vertical-align: baseline;
+  text-decoration: none;}
+
+  html {
+    -moz-osx-font-smoothing: grayscale; }
+
+  html {
+    /*background-image: linear-gradient(to left top, #005153, #123b4b, #202635, #1a151b, #000000);*/
+    Background-color: #202631;
+    color: rgb(199, 166, 17);
+    font-family: "nationale","nationale-regular","Helvetica",sans-serif; }
+  p {
+    font-size: 15px;
+    color: rgb(17, 155, 63);
+
+  }
+  h2{font-weight: bold;}
+  .bold{font-weight: bold;}
+  .btn, .btn.action {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* background-color: #242933; */
+    font-family: "nationale","nationale-regular","Helvetica",sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    border: medium none;
+    min-width: 0px;
+    width: auto;
+    padding: 12px 32px;
+    cursor: pointer;
+    line-height: 1.3;
+    -moz-user-select: none;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: background-color 90ms ease-in-out 0s; }
+
+  .signup-modal .extendedSelector.studDiscSelector {
+    height: 580px; }
+
+  .signup-model .signup-model-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0px auto;
+    text-align: center; }
+
+  .signup-model .signup-content {
+    width: 92%;
+    margin: 20px auto; }
+
+  .signup-model .signup-content .tagline {
+    margin: 25px auto 30px; }
+
+  .signup-model .signup-model-content p {
+    line-height: 1.48;
+    max-width: 680px;
+    margin: 20px auto; }
+
+  /*-- BEGIN FIRST SIGN UP MODEL #1 Customization --*/
+  .signup-model .subscription-plan.subscription-plan-1 {
+    float: left; }
+
+  .signup-model .extendedSelector .subscription-plan {
+    height: 450px; }
+
+  .signup-model .subscription-plan.selected {
+    outline-color: #0FF;
+    outline-style: groove; }
+
+  .signup-model .subscription-plan {
+    width: 44%;
+    height: 240px;
+    text-align: left;
+    margin-top: 0px; }
+
+  .signup-model .subscription-plan {
+    position: relative;
+    height: 230px;
+    outline: 1.5px solid #494949;
+    padding: 30px 20px;
+    text-align: left;
+    cursor: pointer; }
+
+  .signup-model .subscription-plan {
+    text-align: left; }
+
+  .signup-model .subscription-plan .content-header {
+    overflow: auto;
+    min-height: 34px; }
+
+  .signup-model .subscription-plan .content-header .pricing {
+    float: left; }
+
+  .signup-model .subscription-plan .price {
+    margin: 0px; }
+
+  .signup-model .subscription-plan h2 {
+    text-align: left; }
+
+  .signup-model .signup-model-content h1, .signup-model .signup-model-content h2 {
+    font-family: "nationale-demibold",sans-serif;
+    font-size: 16px;
+    margin: 0px auto; }
+
+  .signup-model .subscription-plan .billing-frequency {
+    margin: 0px;
+    color: #DFDFDF; }
+
+  .signup-model .signup-model-content p {
+    line-height: 1.48;
+    max-width: 680px;
+    margin: 20px auto; }
+
+  .signup-model .subscription-plan .content-header .usp-icons {
+    float: right; }
+
+  .signup-model .subscription-plan .usp-icon {
+    width: 30px;
+    margin: 0px 1px; }
+
+  .signup-model .subscription-plan .product-title {
+    font-size: 19px;
+    margin-top: 20px;
+    margin-bottom: 0px; }
+
+  .signup-model .subscription-plan h2 {
+    text-align: left; }
+
+  .signup-model .subscription-plan .product-desc {
+    margin-top: 5px;
+    color: #DFDFDF;
+    margin-bottom: 0px; }
+
+  .signup-model .signup-model-content p {
+    line-height: 1.48;
+    max-width: 680px;
+    margin: 20px auto; }
+
+  .signup-model .desktop-pay-frequency {
+    display: block;
+    margin-top: 30px; }
+
+  .signup-model .desktop-pay-frequency-item {
+    border-top: 1px solid #525252;
+    padding-top: 15px;
+    padding-bottom: 15px; }
+
+  .signup-model .subscription-plan h2 {
+    text-align: left; }
+
+  .signup-model .desktop-pay-frequency-item h2 {
+    margin-top: 0px;
+    margin-bottom: 0px; }
+
+  .signup-model .desktop-pay-frequency-item p {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    font-size: 12px; }
+
+  .signup-model .signup-model-content p {
+    line-height: 1.48;
+    max-width: 680px;
+    margin: 20px auto; }
+
+  .signup-model .start-trial-prod-action {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px; }
+  .btn1{
+      background: rgb(159, 224, 184) none repeat scroll 0% 0% !important;
+      color: black;
+  }
+  .btn2{
+      background: rgb(159, 224, 184) none repeat scroll 0% 0% !important;
+      color: black;
+  }
+  .signup-model .subscription-plan.subscription-plan-1.selected .start-trial-prod-action .btn, .signup-model .subscription-plan.subscription-plan-1.selected .start-trial-prod-action .btn-gray, .signup-model .subscription-plan.subscription-plan-1.selected .start-trial-prod-action .btn-disabled, .signup-model .subscription-plan.subscription-plan-1.selected .start-trial-prod-action .btn-white {
+    background: #0FF none repeat scroll 0% 0% !important;
+    color:black;}
+  .signup-model .subscription-plan.subscription-plan-2.selected .start-trial-prod-action .btn, .signup-model .subscription-plan.subscription-plan-2.selected .start-trial-prod-action .btn-gray, .signup-model .subscription-plan.subscription-plan-2.selected .start-trial-prod-action .btn-disabled, .signup-model .subscription-plan.subscription-plan-2.selected .start-trial-prod-action .btn-white {
+    background: #0FF none repeat scroll 0% 0% !important;
+    color:black;}
+
+  .signup-model .start-trial {
+    position: static;
+    margin-top: 20px !important; }
+
+  .signup-model .start-trial {
+    font-size: 16px;
+    width: 100% !important;
+    margin-top: 0px !important;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    padding: 20px 0px 16px; }
+
+
+  /*-- BEGIN SECOND SIGN UP MODEL #2 Customization--*/
+  .subscription-plan.subscription-plan-2 {
+    float: right;
+    margin-top: 0px; }
+
+  @media (min-width: 768px) {
+    p {
+      font-size: 15px; }
+
+    .signup-model .extendedSelector .studDiscSelector {
+      height: 580px; }
+
+    .signup-model .signup-content {
+      overflow: visible;
+      width: 100%;
+      height: 680px;
+      max-width: 900px; }
+
+    .signup-model .tagline {
+      font-size: 20px; }
+
+    /*-- BEGIN FIRST SIGN UP MODEL #1 Customization --*/
+    .signup-model .extendedSelector {
+      height: 650px; }
+
+    .signup-model .signup-content {
+      overflow: visible;
+      width: 100%;
+      height: 680px;
+      max-width: 900px; }
+
+    .signup-model .subscription-plan .subscription-plan-1 {
+      float: left; }
+
+    .signup-model .extendedSelector .subscription-plan {
+      height: 450px; }
+
+    .signup-model .subscription-plan {
+      width: 44%;
+      height: 440px;
+      text-align: left;
+      margin-top: 0px; }
+
+    .signup-model .subscription-plan:hover {
+      opacity: 0.85; }
+
+    .signup-model .subscription-plan {
+      text-align: left; }
+
+    .signup-model .subscription-plan h2 {
+      text-align: left; }
+
+    .signup-model .desktop-pay-frequency {
+      display: block;
+      margin-top: 30px; }
+
+    .signup-model .desktop-pay-frequency-item {
+      border-top: 1px solid #525252;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background: transparent url("http://tidal.com/images/icons/selected-icon.87524276.png") no-repeat scroll right 0px center/42px auto; }
+
+    .signup-model .selected .desktop-pay-frequency-item.selected {
+      background: transparent url("http://tidal.com/images/icons/selected-icon-cyan.3e90a19a.png") no-repeat scroll right 0px center/42px auto; }
+
+    .signup-model .desktop-pay-frequency-item p {
+      margin-top: 3px;
+      margin-bottom: 0px;
+      font-size: 12px; }
+
+    .signup-model .product-title {
+      margin-top: 40px !important; } }
+
+
+  @media (min-width: 360px) {
+    p {
+      font-size: 15px; }
+
+    .signup-model .extendedSelector .studDiscSelector {
+      height: 580px; }
+
+    .signup-model .signup-content {
+      overflow: visible;
+      width: 100%;
+      height: 680px;
+      max-width: 900px; }
+
+    .signup-model .tagline {
+      font-size: 20px; }
+
+    /*-- BEGIN FIRST SIGN UP MODEL #1 Customization --*/
+    .signup-model .extendedSelector {
+      height: 650px; }
+
+    .signup-model .signup-content {
+      overflow: visible;
+      width: 100%;
+      height: 680px;
+      max-width: 900px; }
+
+    .signup-model .subscription-plan .subscription-plan-1 {
+      float: left; }
+
+    .signup-model .extendedSelector .subscription-plan {
+      height: 450px; }
+
+    .signup-model .subscription-plan {
+      width: 44%;
+      height: 440px;
+      text-align: left;
+      margin-top: 0px; }
+
+    .signup-model .subscription-plan:hover {
+      opacity: 0.85; }
+
+    .signup-model .subscription-plan {
+      text-align: left; }
+
+    .signup-model .subscription-plan h2 {
+      text-align: left; }
+
+    .signup-model .desktop-pay-frequency {
+      display: block;
+      margin-top: 30px; }
+
+    .signup-model .desktop-pay-frequency-item {
+      border-top: 1px solid #525252;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background: transparent url("http://tidal.com/images/icons/selected-icon.87524276.png") no-repeat scroll right 0px center/42px auto; }
+
+    .signup-model .selected .desktop-pay-frequency-item.selected {
+      background: transparent url("http://tidal.com/images/icons/selected-icon-cyan.3e90a19a.png") no-repeat scroll right 0px center/42px auto; }
+
+    .signup-model .desktop-pay-frequency-item p {
+      margin-top: 3px;
+      margin-bottom: 0px;
+      font-size: 12px; }
+
+    .signup-model .product-title {
+      margin-top: 40px !important; } }
+  /*-- END MEDIA QUERIE --*/
+
+  /*# sourceMappingURL=practice.css.map */
