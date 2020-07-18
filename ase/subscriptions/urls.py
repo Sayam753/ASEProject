@@ -1,7 +1,8 @@
 from django.urls import path, include
 
-from subscriptions.views import subscribe
+from subscriptions.views import subscribe, checkout
 
 urlpatterns = [
-    path('', subscribe, name='subscribe')
+    path('', subscribe, name='subscribe'),
+    path('checkout/', checkout, name='checkout')
 ]

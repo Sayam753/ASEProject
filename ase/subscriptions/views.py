@@ -2,9 +2,14 @@ import stripe
 from django.shortcuts import render
 from django.urls import reverse
 from django.conf import settings
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 def subscribe(request):
+    return render(request, 'subscriptions/subscription.html')
+
+@csrf_exempt
+def checkout(request):
     stripe.api_key = settings.STRIPE_PRIVATE_KEY
 
     session = stripe.checkout.Session.create(
@@ -17,9 +22,8 @@ def subscribe(request):
                     success_url = request.build_absolute_uri(reverse('home')) + '?session_id={CHECKOUT_SESSION_ID}',
                     cancel_url = request.build_absolute_uri(reverse('subscribe')),
     )
-    context = {
+
+    return JsonResponse({
         'session_id' : session.id,
         'strip_public_key' : settings.STRIPE_PUBLIC_KEY
-    }
-
-    return render(request, 'subscriptions/subscription.html', context)
+    })
