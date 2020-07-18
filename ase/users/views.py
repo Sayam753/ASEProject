@@ -6,7 +6,6 @@ from . import forms
 # Create your views here.
 def register(request):
     """
-    -- Summary --
     register view returns the user registration form
 
     """
