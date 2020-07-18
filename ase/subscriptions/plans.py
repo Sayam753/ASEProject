@@ -3,9 +3,9 @@ from enum import IntEnum
 
 class SubscriptionPlan(IntEnum):
     #10 searches
-    TRIAL = 0
+    TRIAL = 2
     #60 searches
-    BASIC = 99
+    BASIC = 199
     #300 searches
     PREMIUM = 399
     #700

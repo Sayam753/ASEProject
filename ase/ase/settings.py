@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'payments.apps.PaymentsConfig',
     'search.apps.SearchConfig',
     'users.apps.UsersConfig',
     'subscriptions.apps.SubscriptionsConfig',
