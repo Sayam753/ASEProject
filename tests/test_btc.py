@@ -1,8 +1,8 @@
-import pytest
-import requests
 import time 
 import json
 
+import pytest
+import requests
 
 @pytest.mark.parametrize("url, err_no, extras", [
 	("https://chain.api.btc.com/v3/block/latest", 0, None),

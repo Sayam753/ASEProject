@@ -13,6 +13,10 @@ def home(request):
 
 @login_required(redirect_field_name='next', login_url=reverse_lazy('login'))
 def query(request, argument):
+    """
+    query view returns the result of the user query about btc, domain, email, device, ip etc.
+    """
+
     user = request.user
     if user.subscribed:
         if request.method == "POST":
