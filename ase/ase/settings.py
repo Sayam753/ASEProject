@@ -26,7 +26,7 @@ SECRET_KEY = 'is@m24*g!o+&q(t70z=st9i+ntl2*m@qhlr47l3dq@hdr7p3zl'
 DEBUG = True
 
 # Register your models here.
-ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '127.0.0.1', 'localhost']
 
 
 # Application definition

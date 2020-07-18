@@ -14,6 +14,7 @@ class Plan(models.Model):
     plan = models.IntegerField(
         default=Plans.BASIC,
         choices=Plans.choices(),
+        unique=True,
         help_text='amount for searches'
     )
 
@@ -31,7 +32,7 @@ class Plan(models.Model):
     @property
     def search_limit(self):
         if self.plan == Plans.TRIAL:
-            return 0
+            return 10
         elif self.plan == Plans.BASIC:
             return 60
         elif self.plan == Plans.PREMIUM:
@@ -68,25 +69,7 @@ class Subscription(models.Model):
         ordering = ('-searches_completed',)
 
     def __str__(self):
-        return self.user
-
-    @property
-    def change_to_active(self, plan):
-        new_subscription = Subscription.create(
-            user=self.user,
-            status=State.ACTIVE,
-            plan=plan,
-        )
-        new_subscription.save()
-        self.status = State.TRIAL_ENDED if self.status == State.TRIAL_ACTIVE else self.status
-        self.save()
-        return new_subscription
-
-    @property
-    def change_to_trial_ended(self):
-        self.status = State.TRIAL_ENDED
-        self.save()
-        return self
+        return self.user.username
 
     @property
     def change_to_deactivated(self):
@@ -96,6 +79,8 @@ class Subscription(models.Model):
 
     @property
     def decrement_searches(self):
+        print('hiiiiiiiiiiii')
+        print(self.searches_completed)
         self.searches_completed += 1
         self.save()
         return self
