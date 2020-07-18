@@ -1,8 +1,9 @@
+import os
+
 import pytest
 import shodan
-import os
-my_key = os.environ.get('pass')
 
+my_key = os.environ.get('pass')
 
 @pytest.mark.parametrize("key, ip, extras", [
     (my_key, "45.76.151.11", None),("isha","45.76.151.11","Wrong API"),(my_key, "4346334773","Wrong IP"),("HELLO","23567","Wrong both"),(my_key, "Hello","Wrong IP")
