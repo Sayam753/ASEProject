@@ -6,16 +6,13 @@ from blockcypher import get_blockchain_overview, get_address_details, get_block_
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 
-
 # Create your views here.
 def home(request):
     return render(request, 'search/osint.html')
 
-
 @login_required(redirect_field_name='next', login_url=reverse_lazy('login'))
 def query(request, argument):
     """
-    -- Summary --
     query view returns the result of the user query about btc, domain, email, device, ip etc.
     """
     if request.method == "POST":
