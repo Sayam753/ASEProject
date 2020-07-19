@@ -109,17 +109,10 @@ def diamond(request):
 
 @csrf_exempt
 def stripe_webhook(request):
-    endpoint_secret = 'whsec_0bFVho9jv8RwpCNQ9oC0AINEKGZDO18O'
-    # endpoint_secret = stripe.WebhookEndpoint.create(
-    #     url='localhost:8000/subscribe/stripe_webhook/',
-    #     enabled_events=[
-    #         'payment_intent.created',
-    #         'checkout.session.completed',
-    #         'customer.created',
-    #         'charge.succeeded',
-    #         'payment_intent.succeeded'
-    #     ],
-    # )
+    #test
+    # endpoint_secret = 'whsec_0bFVho9jv8RwpCNQ9oC0AINEKGZDO18O'
+    #deployed
+    endpoint_secret = 'whsec_lhBWqqPoYUghCa4ecsjqyrbZWsKMFCQE'
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
