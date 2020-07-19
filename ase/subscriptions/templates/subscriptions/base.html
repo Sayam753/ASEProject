@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'styles/subscription.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script defer src="{% static 'javascript/subscriptions.js' %}"></script>
+    <title>OSINT | Subscribe</title>
+  </head>
+  <body>
+    <div class="signup-model">
+      <div class="signup-model-content">
+        <div class="signup-content">
+          <p class="tagline" style="margin-bottom:100px">Choose a subscription to ROCK WITH!</p>
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

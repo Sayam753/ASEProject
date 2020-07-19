@@ -25,7 +25,8 @@ SECRET_KEY = 'is@m24*g!o+&q(t70z=st9i+ntl2*m@qhlr47l3dq@hdr7p3zl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/']
+# Register your models here.
+ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = ['http://ec2-54-81-70-14.compute-1.amazonaws.com/']
 INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'users.apps.UsersConfig',
+    'subscriptions.apps.SubscriptionsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,10 +126,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-AUTH_USER_MODEL = 'users.user'
+AUTH_USER_MODEL = 'users.UserProfile'
 
 
 #REDIRECTING ROUTE POST LOGIN AND LOGOUT
@@ -135,11 +136,15 @@ LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
 
 
-
-
+#EMAIL BACKEND
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'projectonosint1@gmail.com'
 EMAIL_HOST_PASSWORD = 'timepass123'
+
+
+#STRIPE KEYS
+STRIPE_PUBLIC_KEY = 'pk_test_WoNz8yWKYKAkhvvZlxbAVOca00yAOCsb5u'
+STRIPE_PRIVATE_KEY = 'sk_test_u8LmRKW6qTslD9vu30qIvZWT00fiznQKky'

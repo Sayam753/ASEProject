@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import user
-from . import forms
+
+from users.models import UserProfile
+from users import forms
 
 
 # Create your views here.
