@@ -1,4 +1,7 @@
 {% extends "search/base.html" %}
+{% block title%}
+OSINT | SEARCH RESULTS
+{%endblock%}
 {% block content %}
 {% load isinstance_tag %}
 {% load any_tag %}
@@ -22,4 +25,3 @@
 
   {% endfor %}
 {% endblock content %}
-
