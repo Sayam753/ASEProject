@@ -5,33 +5,57 @@ OSINT | SEARCH RESULTS
 {% block content %}
 {% load isinstance_tag %}
 {% load any_tag %}
+
 <table>
-  {% for key, value in response.items %}
-    {% if value|isinstance_tag:'dict' %}
+  {% for key,value in response.items%}
     <tr>
-      {% if value|any_tag:'check' %}               
-        <th>{{ key.capitalize }}</th> 
-        <td>    
-        {% for sub_key, sub_value in value.items %}
-          {% if sub_value %}
-           {{ sub_key.capitalize }} :: {{ sub_value }}<br>
-          {% endif %}  
-        {% endfor %}
-        </td>
-    </tr>  
-      {% endif %}
-
-    {% else %}
-      {% if value %} 
-        <tr>
-          <th>{{ key.capitalize }}</th> 
-          <td>{{value}}</td>
-        </tr>
-         
-      {% endif %}
-
-    {% endif %}
-
-  {% endfor %}
-</table>   
+      <th>{{ key.capitalize }}</th>
+      <td>
+        {% if value|isinstance_tag:'dict' %}
+          {% for k, v in value.items %}
+            {{k.upper}} --->
+            <br>
+            {% if v|isinstance_tag:'list'%}
+              {% if not v %}
+                NA
+                <br>
+              {% else %}
+                {% for element in v%}
+                  {% for sub_key, sub_value in element.items%}
+                    {% if sub_value %}
+                      {{sub_key.capitalize}}&nbsp;&nbsp;&nbsp; ::  &nbsp;&nbsp;&nbsp;{{sub_value}}
+                      <br>
+                    {% else %}
+                      NA
+                      <br>
+                    {% endif %}
+                  {% endfor %}
+                  <br>
+                {% endfor%}
+                <br>
+              {% endif %}
+            {% else %}
+              {% if v %}
+                {{k.capitalize}}&nbsp;&nbsp;&nbsp; ::  &nbsp;&nbsp;&nbsp;{{v}}
+                <br>
+              {% else %}
+                NA
+              {% endif %}
+              <br>
+            {% endif %}
+          {% endfor %}
+          <br>
+        {% else %}
+          {%  if value %}
+            {{value}}
+          {% else %}
+            NA
+          {% endif %}
+          <br>
+        {% endif %}
+      </td>
+    </tr>
+    <br><br>
+  {% endfor%}
+</table>
 {% endblock content %}
