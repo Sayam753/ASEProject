@@ -109,10 +109,10 @@ def diamond(request):
 
 @csrf_exempt
 def stripe_webhook(request):
-    #test
-    # endpoint_secret = 'whsec_0bFVho9jv8RwpCNQ9oC0AINEKGZDO18O'
+    # test
+    endpoint_secret = 'whsec_0bFVho9jv8RwpCNQ9oC0AINEKGZDO18O'
     #deployed
-    endpoint_secret = 'whsec_lhBWqqPoYUghCa4ecsjqyrbZWsKMFCQE'
+    # endpoint_secret = 'whsec_lhBWqqPoYUghCa4ecsjqyrbZWsKMFCQE'
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
