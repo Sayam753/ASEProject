@@ -5,23 +5,33 @@ OSINT | SEARCH RESULTS
 {% block content %}
 {% load isinstance_tag %}
 {% load any_tag %}
+<table>
   {% for key, value in response.items %}
     {% if value|isinstance_tag:'dict' %}
-      {% if value|any_tag:'check' %}
-        <p>{{ key.capitalize }}:: </p>
+    <tr>
+      {% if value|any_tag:'check' %}               
+        <th>{{ key.capitalize }}</th> 
+        <td>    
         {% for sub_key, sub_value in value.items %}
           {% if sub_value %}
-            <p style="margin-left: 50px;">{{ sub_key.capitalize }}:: {{ sub_value }}</p>
-          {% endif %}
+           {{ sub_key.capitalize }} :: {{ sub_value }}<br>
+          {% endif %}  
         {% endfor %}
+        </td>
+    </tr>  
       {% endif %}
 
     {% else %}
-      {% if value %}
-        <p>{{ key.capitalize }}:: {{value}}</p>
+      {% if value %} 
+        <tr>
+          <th>{{ key.capitalize }}</th> 
+          <td>{{value}}</td>
+        </tr>
+         
       {% endif %}
 
     {% endif %}
 
   {% endfor %}
+</table>   
 {% endblock content %}

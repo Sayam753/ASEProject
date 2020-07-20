@@ -4,9 +4,48 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %} {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <style> 
+      body {
+        margin: 50px;
+        margin-top: 0px;
+        padding: 150px;
+        padding-top: 10px;
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(213,116,178,1) 5%, rgba(27,55,103,1) 92%, rgba(0,36,79,0.9923319669664741) 100%);
+      }
+      .head-search {
+        font-family: 'Lobster', cursive;
+        font-size: 2.2em;
+        margin: 10px;
+        padding: 12px;
+        color:coral;
+      }
+      table {
+        width: 100%;
+        border: 1.5px solid black;
+        background-color:lavenderblush;
+        table-layout: auto;
+
+      }
+      tr:hover {background-color:#cadff7;}
+      tr,th {
+        border: 1px solid black;
+        font-family: 'Work Sans', sans-serif;
+      }
+      td {
+        padding: 5px;
+        padding-left: 8px;
+        border: 1px solid black;
+        font-family: 'Work Sans', sans-serif;
+        word-wrap: break-word;
+        max-width: 500px;
+      }
+    </style>
   </head>
-  <body style="max-width: 960px; margin: auto;">
-    <h1>Search Results</h1>
+  <body>
+    <div class="head-search">Search Results</div>
     {% block content %}{% endblock %}
   </body>
 </html>
