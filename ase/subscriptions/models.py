@@ -79,8 +79,6 @@ class Subscription(models.Model):
 
     @property
     def decrement_searches(self):
-        print('hiiiiiiiiiiii')
-        print(self.searches_completed)
         self.searches_completed += 1
         self.save()
         return self
