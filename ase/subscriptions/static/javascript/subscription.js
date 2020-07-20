@@ -12,7 +12,7 @@ var main = function(){
         $(this).addClass('selected');
     })
     //First box, effect button
-    $('.btn').text("PICK AN INSANLY CHEAP TRIAL");
+    $('.btn').text("PICK TRIAL");
     $('.monthly').click(function(){
             $(this).addClass('selected');
             $('.yearly').removeClass('selected');

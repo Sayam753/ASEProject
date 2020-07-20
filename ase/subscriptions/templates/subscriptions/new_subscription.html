@@ -1,7 +1,12 @@
 {% extends "subscriptions/base.html" %}
-{% block content %}
 {%load static%}
-          <div class="subscription-plan subscription-plan-1 selected" style="float:left;margin-left:-17px">
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/new.css' %}">
+{% endblock%}
+{% block content %}
+          <link rel="stylesheet" href="{% static 'styles/new.css' %}">
+          <p class="tagline" style="margin-bottom:100px">welcome to OSINT! <br> choose a subscription plan keep searching ;)</p>
+          <div class="subscription-plan subscription-plan-1 selected" style="float:left;margin-left:-100px;box-shadow: 15px 20px 20px 5px black;">
             <div class="subscription-plan-content">
               <div class="content-header">
                 <div class="pricing">
@@ -29,7 +34,7 @@
           </div><!-- END subscription-plan ******* PLAN 1 ********** -->
 
 
-          <div class="subscription-plan subscription-plan-1 selected" style="float:right;margin-left:33px">
+          <div class="subscription-plan subscription-plan-1 selected" style="float:right;margin-right:-100px;box-shadow:15px 20px 20px 5px black;">
             <div class="subscription-plan-content">
               <div class="content-header">
                 <div class="pricing">
@@ -56,7 +61,7 @@
             </div>
           </div><!-- END subscription-plan ******* PLAN 2 ********** -->
 
-          <div class="subscription-plan subscription-plan-1 selected" style="float:left;margin-left:-17px;margin-top:80px;margin-bottom:50px">
+          <div class="subscription-plan subscription-plan-1 selected" style="float:left;margin-left:-100px;margin-top:80px;margin-bottom:50px;box-shadow:15px 20px 20px 5px black;">
             <div class="subscription-plan-content">
               <div class="content-header">
                 <div class="pricing">
@@ -83,7 +88,7 @@
             </div>
           </div><!-- END subscription-plan ******* PLAN 3 ********** -->
 
-          <div class="subscription-plan subscription-plan-1 selected" style="float:right;margin-left:33px;margin-top:80px;margin-bottom:50px">
+          <div class="subscription-plan subscription-plan-1 selected" style="float:right;margin-right:-100px;margin-top:80px;margin-bottom:50px;box-shadow:15px 20px 20px 5px black;">
             <div class="subscription-plan-content">
               <div class="content-header">
                 <div class="pricing">
