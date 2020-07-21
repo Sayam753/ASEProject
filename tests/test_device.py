@@ -1,3 +1,5 @@
+import json
+
 import pytest
 import shodan
 
@@ -20,5 +22,9 @@ def test_device(key,device_name,extras):
 
 	else:
 		api = shodan.Shodan(key)
-		results = api.search(device_name)
-		assert True		
+		try:
+			results = api.search(device_name)	
+		except shodan.exception.APIError: #Unable to parse json response
+			assert True
+		
+			

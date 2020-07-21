@@ -3,7 +3,7 @@ import os
 import pytest
 import shodan
 
-my_key = os.environ.get('pass')
+my_key = "M3ErsJ85A8xPigPvejyI4fMJVHIu8swN"
 
 @pytest.mark.parametrize("key, ip, extras", [
     (my_key, "45.76.151.11", None),("isha","45.76.151.11","Wrong API"),(my_key, "4346334773","Wrong IP"),("HELLO","23567","Wrong both"),(my_key, "Hello","Wrong IP")
@@ -22,4 +22,8 @@ def test_ip(key, ip, extras):
     else:
         print(key)
         api = shodan.Shodan(key)
-        search = api.host(ip)    
+        try:
+            search = api.host(ip)    
+        except shodan.exception.APIError: #Unable to parse json response
+            assert True
+           

@@ -22,7 +22,7 @@ def test_email(fullcontact_api_key,email_id,extras):
 	if response.status_code != 200:
 		response = response.json()
 		if extras == 403:
-			assert response['message'] == "Invalid authentication"
+			assert response['message'] == "Only acceptable format for Authorization header is 'Bearer XXX'"
 		elif extras == 401:
 			assert response['message'] == "401: Invalid access token: {}".format(fullcontact_api_key)
 
