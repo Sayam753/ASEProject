@@ -226,9 +226,9 @@ Shadow beneath the 3D object
 }
 
 .scene:nth-child(6) .movie .poster {
-    background-image: url(../img/malware.jpg);
+    background-image: url(../img/tweet.png);
     background-position: center;
-       background-size: cover;  
+       background-size: contain;  
 }
 
 .scene:nth-child(1) .info header {
